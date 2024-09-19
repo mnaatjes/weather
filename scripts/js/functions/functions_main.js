@@ -100,3 +100,37 @@ function fetchJSON(filepath, callback) {
     xhttp.open('GET', filepath);
     xhttp.send();
 }
+/*------------------------------------------------------*/
+/***
+ * @name csvToJSON
+ * @type {function}
+ * @return {stringify} json array
+ */
+/*------------------------------------------------------*/
+function csvToJSON(csv_string){
+    // parameters
+    let rows        = csv_string.split('\n');
+    let headers     = rows[0].split(',');
+    let json_arr    = [];
+    // loop csv string
+    for(let i = 0; i < rows.length; i++){
+        // row properties
+        let values      = rows[i].split(',');
+        let temp_obj    = {};
+        // loop headers
+        for(let h = 0; h < headers.length; h++){
+            let key     = headers[h].trim();
+            // check if undefined
+            if(values[h] == undefined){
+                values[h] = 'empty';
+            }
+            let value   = values[h].trim();
+            // define obj key
+            temp_obj[key] = value;
+        }
+        // push data to json array
+        json_arr.push(temp_obj);
+    }
+    // return json string
+    return JSON.stringify(json_arr);
+}

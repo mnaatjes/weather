@@ -7,8 +7,7 @@
  * @name city               @type {HTMLInputElement}
  * @name state              @type {HTMLInputElement}
  * @name country            @type {HTMLInputElement}
- * @name units              @type {HTMLInputElement}
- * @name city               @type {HTMLInputElement}
+ * @name units              @type {string}
  */
 /*------------------------------------------------------*/
 const api_weather_key   = '87f4a90948e268def071e4ccdf01a784';
@@ -34,4 +33,4 @@ class WeatherAPI {
     }
 }
 
-let weather = new WeatherAPI();
+//let weather = new WeatherAPI();

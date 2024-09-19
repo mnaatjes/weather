@@ -1,11 +1,13 @@
 //-------------------------------------------------------------------------------------------------------
 // CIS 174: Functions - Fetch Api: OpenWeather API
 //-------------------------------------------------------------------------------------------------------
+/*
 const api_weather_key   = '87f4a90948e268def071e4ccdf01a784';
 const city              = 'Kalamazoo';
 const state             = 'Michigan';
 const country           = 'US';
 const units             = 'imperial';
+*/
 /*------------------------------------------------------*/
 /***
  * @name getWeather
@@ -100,5 +102,5 @@ async function fetchApi(api_url, storage_name){
     }
 }
 // Implementation
-let weather = getWeather(city, state, country, api_weather_key, 'forecast', 'imperial');
-console.log(weather);
+//let weather = getWeather(city, state, country, api_weather_key, 'forecast', 'imperial');
+//console.log(weather);
