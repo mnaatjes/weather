@@ -31,6 +31,13 @@ class WeatherAPI {
         this.api_key        = api_key;
         this.url_geocoder = 'http://www.google.xom';
     }
+    /*------------------------------------------------------*/
+    /***
+     * @name loadConditions
+     * @type {method}
+     */
+    /*------------------------------------------------------*/
+    loadConditions(){}
 }
 
 //let weather = new WeatherAPI();
