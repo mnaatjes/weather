@@ -8,23 +8,17 @@
     /*VARS*/
     --color-thermo-bkrnd: #38383f;
     --color-thermo-border: #2a2a2e;
+    --thermo-width: 35px;
+    --thermo-height: 240px;
     /*POSITION*/
     z-index: 1;
     position: relative;
     margin-bottom: 50px;
-    width: 25px;
-    height: 240px;
-    /*DISPLAY*/
-    /*BACKGROUND*/
+    width: var(--thermo-width);
+    height: var(--thermo-height);
     /*BORDER*/
     border: 6px solid var(--color-thermo-border);
-    border-radius: 25px;
-    /*TEXT*/
-    /*SHADOW*/
-    /*TRANSITION*/
-    /*ANIMATION*/
-    /*TRANSFORM*/
-    /*DEBUGGING*/
+    border-radius: var(--thermo-width);
 }
 /*--------------------------------*/
 /* Thermo::After = reservoir */
@@ -35,36 +29,33 @@
     z-index: -3;
     position: absolute;
     bottom: -38px;
-    left: calc(50% - 25px);
-    width: 50px;
-    height: 50px;
+    left: calc(50% - var(--thermo-width));
+    width: calc(var(--thermo-width)*2);
+    height: calc(var(--thermo-width)*2);
     /*BACKGROUND*/
     background: #3dcadf;
     /*BORDER*/
     border: 6px solid var(--color-thermo-border);
     border-radius: 100%;
+
 }
 /*--------------------------------*/
 /* Temperature = fill */
 /*--------------------------------*/
 .temperature {
+    /*VARS*/
+    --temp-height: 100%;
     /*POSITION*/
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 100%;
-    /*DISPLAY*/
+    height: var(--temp-height);
     /*BACKGROUND*/
     background-image: linear-gradient(#f17a65, #3dcadf);
     /*BORDER*/
-    border-radius: 5px;
-    /*TEXT*/
-    /*SHADOW*/
+    border-radius: var(--thermo-width);
     /*TRANSITION*/
-    transition: var(--ui-shadow-on);
-    /*ANIMATION*/
-    /*TRANSFORM*/
-    /*DEBUGGING*/
+    transition: height 2s;
 }
 /*--------------------------------*/
 /* Gradients */
@@ -79,6 +70,30 @@
     background-image: linear-gradient(#333 1px, transparent 1px);
     background-size: 12px 20px;
     background-repeat: repeat-y;
+}
+/*--------------------------------*/
+/* tooltip */
+/*--------------------------------*/
+.tooltip {
+    /*POSITION*/
+    z-index: 20;
+    position: absolute;
+    padding: 6px;
+    /*DISPLAY*/
+    /*BACKGROUND*/
+    background: #0d0d0d;
+    /*BORDER*/
+    border-radius: 4px;
+    /*TEXT*/
+    font-size: 10px;
+    color: whitesmoke;
+    /*SHADOW*/
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+    /*TRANSITION*/
+    /*ANIMATION*/
+    /*TRANSFORM*/
+    transform: translateX(var(--thermo-width));
+    /*DEBUGGING*/
 }
 /*--------------------------------*/
 /* Thermo */

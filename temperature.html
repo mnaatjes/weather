@@ -15,9 +15,11 @@
         <header></header>
         <main class="grid">
             <section>
-                <div class="thermo">
+                <div id="fahrenheit" class="thermo">
                     <div class="thermo__bulb"></div>
-                    <div class="temperature"></div>
+                    <div class="temperature">
+                        <div class="tooltip">100&deg;F</div>
+                    </div>
                     <div class="gradients"></div>
                 </div>
             </section>
@@ -25,7 +27,5 @@
         <footer></footer>
     </body>
     <script src="scripts/js/functions/functions_main.js" type="text/Javascript"></script>
-    <script>
-
-    </script>
+    <script src="scripts/js/functions/functions_thermo.js" type="text/Javascript"></script>
 </html>
