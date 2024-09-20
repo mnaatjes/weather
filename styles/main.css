@@ -2,9 +2,13 @@
 /* CIS 170: Main */
 /*---------------------------------------------------------------*/
 /*--------------------------------*/
-/* Imports: */
+/* Imports: Semantic */
 /*--------------------------------*/
 @import url(semantic/semantic.css);
+/*--------------------------------*/
+/* Imports: Elements */
+/*--------------------------------*/
+@import url(elements/element_thermo.css);
 /*--------------------------------*/
 /* Media Queries */
 /*--------------------------------*/
@@ -27,9 +31,8 @@
     --ui-border-radius: 10px;
     --ui-grid-gap: 0px;
 
-    /*BACKGROUND*/
-    --bkrnd-body: white;
-    --bkrnd-grid: white;
+    /*COLORS*/
+    --color-background: #3d3d44;
 
     /*SHADOW*/
     --ui-shadow-off: 2px 2px 12px 6px rgba(0, 0, 0, 0.0);
@@ -58,7 +61,7 @@ body {
     margin: 0;
     padding: 0;
     /*BACKGROUND*/
-    background: var(--bkrnd-body);
+    background: var(--color-background);
     /*TEXT*/
     font-family: var(--ui-font-family);
 }
@@ -67,17 +70,23 @@ body {
 /*--------------------------------*/        
 .grid {
     /*POSITION*/
+    margin: 24px auto 48px auto;
+    width: 600px;
     /*DISPLAY*/
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto auto auto;
+    grid-template-columns: 100%;
+    grid-template-rows: calc(100vh - (24px + 48px + 2px));
+    justify-items: center;
+    align-items: center;
     grid-gap: var(--ui-grid-gap);
     /*BACKGROUND*/
-    background: var(--bkrnd-grid);
+    background: rgb(226, 226, 226);
+    /*SHADOW*/
+    box-shadow: var(--ui-shadow-on);
     /*DEBUGGING*/
-    /*border: var(--debug-border);*/
+    border: var(--debug-border);
 }
-.grid > * {border: var(--debug-border);}
+/*.grid > * {border: var(--debug-border);}*/
 /*--------------------------------*/
 /* Flex Container */
 /*--------------------------------*/
