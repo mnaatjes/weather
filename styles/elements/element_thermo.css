@@ -10,6 +10,7 @@
     --color-thermo-border: #2a2a2e;
     --thermo-width: 35px;
     --thermo-height: 240px;
+    --temp-height: 100%;
     /*POSITION*/
     z-index: 1;
     position: relative;
@@ -23,8 +24,7 @@
 /*--------------------------------*/
 /* Thermo::After = reservoir */
 /*--------------------------------*/
-.thermo::after {
-    content: '';
+.thermo__bulb {
     /*POSITION*/
     z-index: -3;
     position: absolute;
@@ -37,25 +37,23 @@
     /*BORDER*/
     border: 6px solid var(--color-thermo-border);
     border-radius: 100%;
-
 }
 /*--------------------------------*/
 /* Temperature = fill */
 /*--------------------------------*/
 .temperature {
-    /*VARS*/
-    --temp-height: 100%;
     /*POSITION*/
     position: absolute;
     bottom: 0;
     width: 100%;
     height: var(--temp-height);
     /*BACKGROUND*/
-    background-image: linear-gradient(#f17a65, #3dcadf);
+    background-image: linear-gradient(#f17a65 0%, #3dcadf 50%);
     /*BORDER*/
     border-radius: var(--thermo-width);
     /*TRANSITION*/
     transition: height 2s;
+    /*border: 1px solid red;*/
 }
 /*--------------------------------*/
 /* Gradients */
@@ -79,7 +77,6 @@
     z-index: 20;
     position: absolute;
     padding: 6px;
-    /*DISPLAY*/
     /*BACKGROUND*/
     background: #0d0d0d;
     /*BORDER*/
@@ -90,10 +87,8 @@
     /*SHADOW*/
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
     /*TRANSITION*/
-    /*ANIMATION*/
     /*TRANSFORM*/
     transform: translateX(var(--thermo-width));
-    /*DEBUGGING*/
 }
 /*--------------------------------*/
 /* Thermo */
