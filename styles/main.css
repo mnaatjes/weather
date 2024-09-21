@@ -9,6 +9,7 @@
 /* Imports: Elements */
 /*--------------------------------*/
 @import url(elements/element_thermo.css);
+@import url(elements/element_info.css);
 /*--------------------------------*/
 /* Media Queries */
 /*--------------------------------*/
@@ -33,6 +34,12 @@
 
     /*COLORS*/
     --color-background: #3d3d44;
+    --color-white: whitesmoke;
+    --color-blue: cornflowerblue;
+    --color-red: tomato;
+    --color-stroke: #333333;
+    --color-strokeOff: #858585;
+    --color-strokeDim: #C2C2C2;
 
     /*SHADOW*/
     --ui-shadow-off: 2px 2px 12px 6px rgba(0, 0, 0, 0.0);
@@ -70,21 +77,22 @@ body {
 /*--------------------------------*/        
 .grid {
     /*POSITION*/
-    margin: 24px auto 48px auto;
-    width: 600px;
+    margin: 0 auto;
+    max-width: 600px;
     /*DISPLAY*/
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: calc(100vh - (24px + 48px + 2px));
+    grid-template-rows: 60px 52px calc(100vh - 90px) 30px;
     justify-items: center;
     align-items: center;
     grid-gap: var(--ui-grid-gap);
     /*BACKGROUND*/
-    background: rgb(226, 226, 226);
+    background: whitesmoke;
     /*SHADOW*/
     box-shadow: var(--ui-shadow-on);
     /*DEBUGGING*/
     border: var(--debug-border);
+    border-radius: 8px;
 }
 /*.grid > * {border: var(--debug-border);}*/
 /*--------------------------------*/

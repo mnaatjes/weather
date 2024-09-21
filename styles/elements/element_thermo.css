@@ -8,13 +8,15 @@
     /*VARS*/
     --thermo-width: 48px;
     --thermo-height: 240px;
+    --mercury-height: 100%;
+    --mercury-timing: 10s;
+    --mercury-end-color: #ff6347;
     /*POSITION*/
     position: relative;
     width: var(--thermo-width);
     height: var(--thermo-height);
-    /*DISPLAY*/
     /*BACKGROUND*/
-    background: whitesmoke;
+    background: #f5f5f5;
     /*BORDER*/
     border: 6px solid #333;
     border-top-right-radius: var(--thermo-width);
@@ -22,13 +24,8 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     border-bottom: none;
-    /*TEXT*/
     /*SHADOW*/
     box-shadow: inset -2px -2px 1px 4px rgba(0, 0, 0, 0.2);
-    /*TRANSITION*/
-    /*ANIMATION*/
-    /*TRANSFORM*/
-    /*DEBUGGING*/
 }
 /*--------------------------------*/
 /* Thermo::After = reservoir */
@@ -41,7 +38,7 @@
     width: calc(var(--thermo-width)*2);
     height: calc(var(--thermo-width)*2);
     /*BACKGROUND*/
-    background: cornflowerblue;
+    background: #6495ed;
     /*BORDER*/
     border-radius: 100%;
     /*SHADOW*/
@@ -57,12 +54,12 @@
     z-index: 2;
     position: absolute;
     width: calc(var(--thermo-width) - 12px);
-    height: 100%;
+    height: var(--mercury-height);
     bottom: 0;
     left: 0;
     /*DISPLAY*/
     /*BACKGROUND*/
-    background-image: linear-gradient(tomato 0% 25%, cornflowerblue 75%);
+    background-image: linear-gradient(var(--mercury-end-color) 0% 25%, cornflowerblue 75%);
     /*BORDER*/
     border-top-right-radius: var(--thermo-width);
     border-top-left-radius: var(--thermo-width);
@@ -73,11 +70,8 @@
     /*SHADOW*/
     box-shadow: inset -2px -2px 1px 4px rgba(0, 0, 0, 0.2);
     /*TRANSITION*/
-    transition: var(--ui-transition);
-}
-.thermo:hover .thermo__mercury {
-    height: 10%;
-    background-image: linear-gradient(cornflowerblue 0% 25%, cornflowerblue 75%);
+    transition-timing-function: linear;
+    transition-duration: var(--mercury-timing);
 }
 /*--------------------------------*/
 /* Gradients */
@@ -102,22 +96,87 @@
     /*POSITION*/
     z-index: 12;
     position: absolute;
-    top: 0;
-    right: calc((var(--thermo-width) * -1) - 12px);
-    padding: 6px;
+    top: -9px;
+    right: calc((var(--thermo-width) * -1) - 24px);
+    width: 80px;
+    height: 36px;
     /*DISPLAY*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
     /*BACKGROUND*/
-    background: #5e5e5e;
+    background: whitesmoke;
     /*BORDER*/
+    border: 1px solid #999;
     border-radius: 4px;
     /*TEXT*/
-    color: whitesmoke;
+    color: #333;
+    text-align: right;
     /*SHADOW*/
     box-shadow: 2px 2px 1px 2px rgba(0, 0, 0, 0.2);
+}
+.mercury__tooltip::after {
+    content: '';
+    /*POSITION*/
+    position: absolute;
+    bottom: calc(50% - 12px);
+    left: -18px;
+    margin-left: -5px;
+    /*DISPLAY*/
+    /*BACKGROUND*/
+    /*BORDER*/
+    border-width: 12px;
+    border-style: solid;
+    border-color: transparent whitesmoke transparent transparent;
+    /*TEXT*/
+    /*SHADOW*/
     /*TRANSITION*/
     /*ANIMATION*/
     /*TRANSFORM*/
     /*DEBUGGING*/
+}
+/*--------------------------------*/
+/* Thermo: info - container */
+/*--------------------------------*/
+.thermo__info__container {
+    /*POSITION*/
+    position: absolute;
+    top: 0;
+    left: calc(var(--thermo-width) - 6px);
+    /*DISPLAY*/
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(12, 1fr);
+    /*BACKGROUND*/
+    /*BORDER*/
+    /*TEXT*/
+    /*SHADOW*/
+    /*TRANSITION*/
+    /*ANIMATION*/
+    /*TRANSFORM*/
+    /*DEBUGGING*/
+    border: 1px solid red;
+    padding: 24px;
+}
+/*--------------------------------*/
+/* Thermo: info - item */
+/*--------------------------------*/
+.thermo__info__item {
+    /*GRID*/
+    grid-column: 1;
+    /*POSITION*/
+    /*DISPLAY*/
+    /*BACKGROUND*/
+    /*BORDER*/
+    /*TEXT*/
+    font-size: 12px;
+    font-weight: 500;
+    /*SHADOW*/
+    /*TRANSITION*/
+    /*ANIMATION*/
+    /*TRANSFORM*/
+    /*DEBUGGING*/
+    border: 1px solid black;
 }
 /*--------------------------------*/
 /* Thermo */

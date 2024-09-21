@@ -11,21 +11,27 @@
         <title>Temperature</title>
     </head>
     <body>
-        <nav></nav>
-        <header></header>
-        <main class="grid">
-            <section>
-                <div id="fahrenheit" class="thermo">
-                    <div class="thermo__bulb"></div>
-                    <div class="thermo__mercury">
-                        <div class="mercury__tooltip">100&deg;F</div>
+        <div class="grid">
+            <nav></nav>
+            <header>Fahrenheit</header>
+            <main>
+                <section class="--thermometer">
+                    <div id="fahrenheit" class="thermo">
+                        <div class="thermo__bulb"></div>
+                        <div class="thermo__mercury">
+                            <div class="mercury__tooltip" data-current="100.0"><span>100.0</span>&deg;F</div>
+                        </div>
+                        <div class="thermo__info__container">
+                            <div class="thermo__info__item">Surface of Venus</div>
+                        </div>
                     </div>
-                    <div class="thermo__gradients"></div>
-                </div>
-            </section>
-        </main>
-        <footer></footer>
+                </section>
+            </main>
+            <footer>&copy;Michael Naatjes</footer>
+        </div>
     </body>
     <script src="scripts/js/functions/functions_main.js" type="text/Javascript"></script>
+    <script src="scripts/js/functions/class_temp_converter.js" type="text/Javascript"></script>
+    <script src="scripts/js/functions/class_thermometer.js" type="text/Javascript"></script>
     <script src="scripts/js/functions/functions_thermo.js" type="text/Javascript"></script>
 </html>
