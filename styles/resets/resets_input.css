@@ -1,0 +1,59 @@
+/*---------------------------------------------------------------*/
+/* CIS 174: Input
+/*---------------------------------------------------------------*/
+/*--------------------------------*/
+/* Input */
+/*--------------------------------*/
+input[type="text"] {
+    outline: none;
+    border: none;
+    /*POSITION*/
+    padding: 12px 0px 12px 6px;
+    display: block;
+    /*BACKGROUND*/
+    background-color: var(--color-white);
+    /*TEXT*/
+    color: var(--color-strokeDim);
+    text-align: right;
+    /*TRANSITION*/
+    transition: var(--ui-transition);
+}
+/*--------------------------------*/
+/* Button (enabled) */
+/*--------------------------------*/
+input[data-state="enabled"] {
+    /*BACKGROUND*/
+    background: var(--color-white);
+    /*TEXT*/
+    color: var(--color-strokeOff);
+}
+input[data-state="enabled"]:focus {
+    /*TEXT*/
+    color: var(--color-stroke);
+}
+/*--------------------------------*/
+/* Button (disabled) */
+/*--------------------------------*/
+input[data-state="disabled"] {
+    pointer-events: none;
+    /*BACKGROUND*/
+    background: var(--color-strokeDim);
+    /*TEXT*/
+    color: var(--color-strokeOff);
+}
+/*--------------------------------*/
+/* Input */
+/*--------------------------------*/
+    /*GRID*/
+    /*FLEX*/
+    /*VARS*/
+    /*POSITION*/
+    /*DISPLAY*/
+    /*BACKGROUND*/
+    /*BORDER*/
+    /*TEXT*/
+    /*SHADOW*/
+    /*TRANSITION*/
+    /*ANIMATION*/
+    /*TRANSFORM*/
+    /*DEBUGGING*/

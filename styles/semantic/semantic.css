@@ -2,83 +2,149 @@
 /* CIS 170: Semantic | Main: */
 /*---------------------------------------------------------------*/
 /*--------------------------------*/
-/* Semantic: All */
-/*--------------------------------*/
-nav,
-header,
-main,
-footer {
-    /*GRID*/
-    grid-column: 1;
-}
-/*--------------------------------*/
 /* Header: Nav */
 /*--------------------------------*/
 nav {
-    /*GRID*/
-    grid-row: 1;
-    /*FLEX*/
-    /*VARS*/
     /*POSITION*/
+    margin: 0 auto;
+    padding: 0 12px;
+    max-width: 600px;
+    height: 60px;
     /*DISPLAY*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     /*BACKGROUND*/
+    background: var(--color-white);
     /*BORDER*/
+    border-bottom: 1px solid var(--color-stroke);
     /*TEXT*/
+    font-size: 14px;
     /*SHADOW*/
+    box-shadow: var(--ui-shadow-on);
     /*TRANSITION*/
-    /*ANIMATION*/
-    /*TRANSFORM*/
-    /*DEBUGGING*/
+    transition: var(--ui-transition);
 }
 /*--------------------------------*/
 /* Header */
 /*--------------------------------*/
 header {
     /*GRID*/
-    grid-row: 2;
-    /*FLEX*/
-    /*VARS*/
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    align-self: center;
     /*POSITION*/
-    /*DISPLAY*/
-    /*BACKGROUND*/
-    /*BORDER*/
+    width: 100%;
     /*TEXT*/
-    /*SHADOW*/
-    /*TRANSITION*/
-    /*ANIMATION*/
-    /*TRANSFORM*/
-    /*DEBUGGING*/
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-stroke);
 }
 /*--------------------------------*/
 /* Main */
 /*--------------------------------*/
 main {
     /*GRID*/
-    grid-row: 3;
+    grid-column: 1 / span 3;
+    grid-row: 2;
     /*POSITION*/
+    margin-bottom: 12px;
+    height: 100%;
     /*DISPLAY*/
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: repeat(2, 152px) 48px;
-    grid-gap: 24px;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 328px calc(100% - 328px);
+    grid-gap: 12px;
 }
-main > * {    border: 1px solid red;}
+/*main > * {    border: 1px solid red;}*/
+/*--------------------------------*/
+/* Section: __display */
+/*--------------------------------*/
+section[class^="__display"] {
+    /*GRID*/
+    grid-row: 2;
+    align-self: stretch;
+    /*POSITION*/
+    padding: 12px 0px;
+    /*DISPLAY*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*BORDER*/
+    border-radius: 8px;
+    border: 2px solid var(--color-strokeDim);
+    /*TEXT*/
+    color: var(--color-strokeDim);
+    font-size: 16px;
+}
+/*--------------------------------*/
+/* Section: __display--left */
+/*--------------------------------*/
+main section[class*="__display--left"] {grid-column: 1;}
+/*--------------------------------*/
+/* Section: __display--right */
+/*--------------------------------*/
+main section[class*="__display--right"] {grid-column: 3;}
 /*--------------------------------*/
 /* Section: --thermometer */
 /*--------------------------------*/
-main section[class*="--thermometer"] {
+main section[class*="__thermometer"] {
+    /*GRID*/
+    grid-column: 1/ span 3;
+    grid-row: 1;
+    justify-self: center;
+}
+/*--------------------------------*/
+/* Section: --buttons */
+/*--------------------------------*/
+main section[class*="__buttons"] {
     /*GRID*/
     grid-column: 2;
-    grid-row: 1 / span 3;
+    grid-row: 2;
+    align-self: stretch;
+    /*DISPLAY*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /*BORDER*/
+    border-radius: 8px;
+    /*TEXT*/
+    font-weight: 500;
+    font-size: 16px;
+}
+/*--------------------------------*/
+/* Section: __row */
+/*--------------------------------*/
+section div[class*="__row"] {
+    /*POSITION*/
+    margin-bottom: 12px;
+    width: 100%;
+    /*DISPLAY*/
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    /*BACKGROUND*/
+    background-color: var(--color-white);
+    /*BORDER*/
+    border: 2px solid var(--color-stroke);
+    border-radius: 8px;
 }
 /*--------------------------------*/
 /* Footer */
 /*--------------------------------*/
 footer {
-    /*GRID*/
-    grid-row: 4;
-    /*FLEX*/
+    /*POSITION*/
+    margin: 0 auto;
+    padding: 0 12px;
+    max-width: 600px;
+    height: 36px;
+    /*DISPLAY*/
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     /*TEXT*/

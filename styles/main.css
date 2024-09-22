@@ -8,8 +8,16 @@
 /*--------------------------------*/
 /* Imports: Elements */
 /*--------------------------------*/
+@import url(elements/element_thermo_small.css);
 @import url(elements/element_thermo.css);
 @import url(elements/element_info.css);
+/*--------------------------------*/
+/* Imports: Resets */
+/*--------------------------------*/
+@import url(resets/reset_select.css);
+@import url(resets/reset_button.css);
+@import url(resets/reset_label.css);
+@import url(resets/resets_input.css);
 /*--------------------------------*/
 /* Media Queries */
 /*--------------------------------*/
@@ -34,16 +42,17 @@
 
     /*COLORS*/
     --color-background: #3d3d44;
-    --color-white: whitesmoke;
-    --color-blue: cornflowerblue;
-    --color-red: tomato;
+    --color-white: #f5f5f5;
+    --color-blue: #6495ed;
+    --color-red: #ff6347;
     --color-stroke: #333333;
     --color-strokeOff: #858585;
     --color-strokeDim: #C2C2C2;
 
     /*SHADOW*/
     --ui-shadow-off: 2px 2px 12px 6px rgba(0, 0, 0, 0.0);
-    --ui-shadow-on: 2px 2px 12px 6px rgba(0, 0, 0, 0.4);
+    --ui-shadow-on: 2px 2px 0px 2px rgba(0, 0, 0, 0.2);
+    --ui-shadow-inset: inset 0px 0px 0px 4px rgba(0, 0, 0, 0.2);
 
     /*TRANSITIONS*/
     --ui-transition: all 0.95s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -78,21 +87,19 @@ body {
 .grid {
     /*POSITION*/
     margin: 0 auto;
+    padding: 12px;
     max-width: 600px;
     /*DISPLAY*/
     display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 60px 52px calc(100vh - 90px) 30px;
-    justify-items: center;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto calc(100vh - (200px));
+    justify-items: stretch;
     align-items: center;
-    grid-gap: var(--ui-grid-gap);
+    grid-gap: 12px;
     /*BACKGROUND*/
     background: whitesmoke;
     /*SHADOW*/
     box-shadow: var(--ui-shadow-on);
-    /*DEBUGGING*/
-    border: var(--debug-border);
-    border-radius: 8px;
 }
 /*.grid > * {border: var(--debug-border);}*/
 /*--------------------------------*/

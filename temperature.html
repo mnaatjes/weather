@@ -11,24 +11,52 @@
         <title>Temperature</title>
     </head>
     <body>
+        <nav>
+            <b>Logo</b>
+            <i class="fa fa-bars"></i>
+        </nav>
         <div class="grid">
-            <nav></nav>
-            <header>Fahrenheit</header>
+            <header>
+                <button id="units_out" type="button" data-state="enabled">Fahrenheit</button>
+            </header>
             <main>
-                <section class="--thermometer">
+                <section class="__thermometer">
                     <div id="fahrenheit" class="thermo">
                         <div class="thermo__bulb"></div>
                         <div class="thermo__mercury">
                             <div class="mercury__tooltip" data-current="100.0"><span>100.0</span>&deg;F</div>
                         </div>
                         <div class="thermo__info__container">
-                            <div class="thermo__info__item">Surface of Venus</div>
+                            <div class="thermo__info__item" data-state="disabled" data-temp="">Surface of Venus</div>
+                            <div class="thermo__info__item" data-state="disabled" data-temp="">Surface of Venus</div>
+                            <div class="thermo__info__item" data-state="disabled" data-temp="">Surface of Venus</div>
+                            <div class="thermo__info__item" data-state="disabled" data-temp="">Surface of Venus</div>
+                            <div class="thermo__info__item" data-state="disabled" data-temp="">Surface of Venus</div>
+                            <div class="thermo__info__item" data-state="disabled" data-temp="">Surface of Venus</div>
+                            <div class="thermo__info__item" data-state="disabled" data-temp="">Absolute Zero</div>
+                        </div>
+                        <div class="thermo__temp__container">
+                            <div class="thermo__temp__item">867.0&deg;F</div>
+                            <div class="thermo__temp__item">-460.0&deg;F</div>
                         </div>
                     </div>
                 </section>
+                <section class="__display--left">123.0&deg;C</section>
+                <section class="__display--right">123.0&deg;K</section>
+                <section class="__buttons">
+                    <div class="__row">
+                        <input type="text" name="number" maxlength="5" size="3" placeholder="867.0" data-state="enabled">
+                        <select name="units_in" id="units_in">
+                            <option value="fahrenheit">&deg;F</option>
+                            <option value="celsius">&deg;C</option>
+                            <option value="kelvin">&deg;K</option>
+                        </select>
+                    </div>
+                    <button type="button" data-state="enabled">Convert</button>
+                </section>
             </main>
-            <footer>&copy;Michael Naatjes</footer>
         </div>
+        <footer>&copy;Michael Naatjes</footer>
     </body>
     <script src="scripts/js/functions/functions_main.js" type="text/Javascript"></script>
     <script src="scripts/js/functions/class_temp_converter.js" type="text/Javascript"></script>

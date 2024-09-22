@@ -96,9 +96,9 @@
     /*POSITION*/
     z-index: 12;
     position: absolute;
-    top: -9px;
-    right: calc((var(--thermo-width) * -1) - 24px);
-    width: 80px;
+    top: -16px;
+    left: calc((var(--thermo-width) * -1) - 24px);
+    width: 72px;
     height: 36px;
     /*DISPLAY*/
     display: flex;
@@ -107,10 +107,10 @@
     /*BACKGROUND*/
     background: whitesmoke;
     /*BORDER*/
-    border: 1px solid #999;
+    border: 2px solid var(--color-strokeDim);
     border-radius: 4px;
     /*TEXT*/
-    color: #333;
+    color: var(--color-stroke);
     text-align: right;
     /*SHADOW*/
     box-shadow: 2px 2px 1px 2px rgba(0, 0, 0, 0.2);
@@ -119,21 +119,13 @@
     content: '';
     /*POSITION*/
     position: absolute;
-    bottom: calc(50% - 12px);
-    left: -18px;
-    margin-left: -5px;
-    /*DISPLAY*/
-    /*BACKGROUND*/
+    top: calc(50% - 12px);
+    left: 70px;
+    margin-right: 5px;
     /*BORDER*/
     border-width: 12px;
     border-style: solid;
-    border-color: transparent whitesmoke transparent transparent;
-    /*TEXT*/
-    /*SHADOW*/
-    /*TRANSITION*/
-    /*ANIMATION*/
-    /*TRANSFORM*/
-    /*DEBUGGING*/
+    border-color: transparent transparent transparent var(--color-strokeDim);
 }
 /*--------------------------------*/
 /* Thermo: info - container */
@@ -143,40 +135,76 @@
     position: absolute;
     top: 0;
     left: calc(var(--thermo-width) - 6px);
+    height: 100%;
     /*DISPLAY*/
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(12, 1fr);
-    /*BACKGROUND*/
-    /*BORDER*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     /*TEXT*/
-    /*SHADOW*/
-    /*TRANSITION*/
-    /*ANIMATION*/
-    /*TRANSFORM*/
-    /*DEBUGGING*/
-    border: 1px solid red;
-    padding: 24px;
+    font-size: 12px;
 }
 /*--------------------------------*/
 /* Thermo: info - item */
 /*--------------------------------*/
 .thermo__info__item {
-    /*GRID*/
-    grid-column: 1;
     /*POSITION*/
-    /*DISPLAY*/
-    /*BACKGROUND*/
+    position: relative;
+    padding-left: 18px;
+    width: 135px;
+}
+.thermo__info__item::before {
+    content: '';
+    /*POSITION*/
+    position: absolute;
+    top: calc(50% - 2px);
+    left: -6px;
+    width: 18px;
     /*BORDER*/
+    border-bottom: 4px solid var(--color-stroke);
+}
+/*--------------------------------*/
+/* Thermo: info - item (states) */
+/*--------------------------------*/
+.thermo__info__item[data-state="disabled"] {color: var(--color-strokeDim);}
+.thermo__info__item[data-state="active--hot"] {color: var(--color-red);}
+.thermo__info__item[data-state="active--cold"] {color: var(--color-blue);}
+.thermo__info__item[data-state="enabled"] {color: var(--color-stroke);}
+/*--------------------------------*/
+/* Thermo: temp - container */
+/*--------------------------------*/
+.thermo__temp__container {
+    /*POSITION*/
+    position: absolute;
+    top: 0;
+    right: calc(var(--thermo-width) - 6px);
+    height: 100%;
+    /*DISPLAY*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     /*TEXT*/
     font-size: 12px;
-    font-weight: 500;
-    /*SHADOW*/
-    /*TRANSITION*/
-    /*ANIMATION*/
-    /*TRANSFORM*/
-    /*DEBUGGING*/
-    border: 1px solid black;
+}
+/*--------------------------------*/
+/* Thermo: temp - item */
+/*--------------------------------*/
+.thermo__temp__item {
+    /*POSITION*/
+    position: relative;
+    padding-right: 18px;
+    width: 75px;
+    /*TEXT*/
+    text-align: right;
+}
+.thermo__temp__item::after {
+    content: '';
+    /*POSITION*/
+    position: absolute;
+    top: calc(50% - 2px);
+    right: -6px;
+    width: 18px;
+    /*BORDER*/
+    border-bottom: 4px solid var(--color-stroke);
 }
 /*--------------------------------*/
 /* Thermo */

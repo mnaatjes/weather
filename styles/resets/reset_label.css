@@ -1,0 +1,50 @@
+/*---------------------------------------------------------------*/
+/* CIS 174: Label
+/*---------------------------------------------------------------*/
+/*--------------------------------*/
+/* Label */
+/*--------------------------------*/
+label {
+    /*POSITION*/
+    padding: 12px 12px 12px 0px;
+    /*BORDER*/
+    border-top: 2px solid var(--color-stroke);
+    border-right: 2px solid var(--color-stroke);
+    border-bottom: 2px solid var(--color-stroke);
+    /*TEXT*/
+    /*TRANSITION*/
+    transition: var(--ui-transition);
+}
+/*--------------------------------*/
+/* Label (enabled) */
+/*--------------------------------*/
+label[data-state="enabled"] {
+
+}
+/*--------------------------------*/
+/* Label (disabled) */
+/*--------------------------------*/
+label[data-state="disabled"] {
+    /*BACKGROUND*/
+    background: var(--color-strokeDim);
+    /*BORDER*/
+    border-color: var(--color-strokeOff);
+    /*TEXT*/
+    color: var(--color-strokeOff);
+}
+/*--------------------------------*/
+/* Label */
+/*--------------------------------*/
+    /*GRID*/
+    /*FLEX*/
+    /*VARS*/
+    /*POSITION*/
+    /*DISPLAY*/
+    /*BACKGROUND*/
+    /*BORDER*/
+    /*TEXT*/
+    /*SHADOW*/
+    /*TRANSITION*/
+    /*ANIMATION*/
+    /*TRANSFORM*/
+    /*DEBUGGING*/

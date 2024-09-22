@@ -1,0 +1,78 @@
+/*---------------------------------------------------------------*/
+/* CIS 174: Button
+/*---------------------------------------------------------------*/
+/*--------------------------------*/
+/* Button */
+/*--------------------------------*/
+button {
+    outline: none;
+    border: none;
+    /*POSITION*/
+    padding: 12px;
+    width: 100%;
+    /*DISPLAY*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*BACKGROUND*/
+    background-color: var(--color-background);
+    /*BORDER*/
+    border-radius: 8px;
+    border: 2px solid var(--color-stroke);
+    /*TEXT*/
+    color: var(--color-white);
+    font-weight: 600;
+    /*TRANSITION*/
+    transition: var(--ui-transition);
+}
+/*--------------------------------*/
+/* Button (enabled) */
+/*--------------------------------*/
+button[data-state="enabled"] {
+    cursor: pointer;
+    /*BACKGROUND*/
+    background: var(--color-stroke);
+    /*BORDER*/
+    border-color: var(--color-stroke);
+    /*TEXT*/
+    color: var(--color-white);
+}
+button[data-state="enabled"]:hover {
+    /*BACKGROUND*/
+    background: var(--color-white);
+    /*BORDER*/
+    border-color: var(--color-stroke);
+    /*TEXT*/
+    color: var(--color-stroke);
+}
+button[data-state="enabled"]:active {
+    /*SHADOW*/
+    box-shadow: var(--ui-shadow-inset);
+}
+/*--------------------------------*/
+/* Button (disabled) */
+/*--------------------------------*/
+button[data-state="disabled"] {
+    /*BACKGROUND*/
+    background: var(--color-strokeDim);
+    /*BORDER*/
+    border-color: var(--color-strokeOff);
+    /*TEXT*/
+    color: var(--color-strokeOff);
+}
+/*--------------------------------*/
+/* Button */
+/*--------------------------------*/
+    /*GRID*/
+    /*FLEX*/
+    /*VARS*/
+    /*POSITION*/
+    /*DISPLAY*/
+    /*BACKGROUND*/
+    /*BORDER*/
+    /*TEXT*/
+    /*SHADOW*/
+    /*TRANSITION*/
+    /*ANIMATION*/
+    /*TRANSFORM*/
+    /*DEBUGGING*/

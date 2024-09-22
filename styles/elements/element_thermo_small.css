@@ -2,13 +2,47 @@
 /* CIS 174: Thermo - Small
 /*---------------------------------------------------------------*/
 /*--------------------------------*/
-/* Info */
+/* Thermo: --small */
 /*--------------------------------*/
 .thermo--small{
-    
+    /*VARS*/
+    --thermo-width-sm: 12px;
+    --mercury-timing: 10s;
+    /*POSITION*/
+    position: relative;
+    width: var(--thermo-width-sm);
+    height: 100%;
+    /*BORDER*/
+    border: 2px solid #333;
+    border-radius: var(--thermo-width-sm);
+    /*BACKGROUND*/
+    background-image: linear-gradient(tomato 0% 25%, cornflowerblue 75%);
 }
 /*--------------------------------*/
-/* Label */
+/* Thermo--small - info - container */
+/*--------------------------------*/
+.thermo--small__lines {
+    /*POSITION*/
+    position: absolute;
+    top: -2px;
+    right: 6px;
+    width: 18px;
+    height: calc(100% + 4px);
+    /*BORDER*/
+    border-top: 2px solid var(--color-stroke);
+    border-bottom: 2px solid var(--color-stroke);
+    /*TEXT*/
+    /*SHADOW*/
+    /*TRANSITION*/
+    /*ANIMATION*/
+    /*TRANSFORM*/
+    /*DEBUGGING*/
+}
+/*--------------------------------*/
+/* Thermo--small tooltip */
+/*--------------------------------*/
+/*--------------------------------*/
+/* Thermo: --small */
 /*--------------------------------*/
     /*GRID*/
     /*FLEX*/
