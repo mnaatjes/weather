@@ -14,22 +14,38 @@
  */
 /*------------------------------------------------------*/
 class Thermometer{
-    constructor(thermo_id, tooltip_obj){
+    constructor(thermo_id){
         // HTML Element Properties
         this.thermometer        = document.getElementById(thermo_id);
         this.mercury            = this.thermometer.querySelector('.thermo__mercury');
+        /***
+         * @name tooltip thermo tooltip display
+         * @type {Object}
+         * @method getCurrentTemp
+         * @method updateData
+         * @method printTemp output innerHTML of temp property
+         */
         this.tooltip            = {
             node_parent: document.getElementById('current'),
-            nodes_children: this.parent.querySelectorAll('span'),
-            node_temp: nodes_children[0],
-            node_unit: nodes_children[1],
-            data: this.parent.getAttribute('data-current'),
-            temp: null,
-            updateData: function(){},
+            node_temp: document.getElementById('current').childNodes[0],
+            node_unit: document.getElementById('current').childNodes[1],
+            data: this.getData(),
+            temp: this.getCurrentTemp(),
+            units: this.getCurrentUnits(),
+            getCurrentTemp: function(){},
+            getCurrentUnits: function(){},
+            getData: function(){ return JSON.parse(this.node_parent.getAttribute('data-current'));},
+            updateData: function(){
+                let temp_obj = {
+                    temp: null,
+                    units: null,
+                    active: false
+                }
+            },
             printTemp: function(){}
         };
         // Number Properties
-        this.number_current     = parseFloat(document.getElementById('current').getAttribute('data-current'));
+        this.number_current     = parseFloat(this.tooltip.temp);
     }
     /*------------------------------------------------------*/
     /***

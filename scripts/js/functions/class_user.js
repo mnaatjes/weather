@@ -8,31 +8,42 @@
  * @param {HTMLElement} input_field
  * @param {HTMLElement} button
  * @param {HTMLElement} error_field
+ * @method constructor
+ * @method manageInputs
+ * @method onClick
  */
 /*------------------------------------------------------*/
 class User {
+    /*------------------------------------------------------*/
+    /***
+     * @name constructor
+     * @type {method}
+     * @property {HTMLElement} btn_convert
+     * @property {HTMLElement} btn_units_out
+     * @property {HTMLElement} input_field
+     * @property {HTMLElement} select_field
+     * @property {Object} errors
+     * @property {Object} tooltip
+     */
+    /*------------------------------------------------------*/
     constructor(){
         // element properties
         this.btn_convert    = document.getElementById('convert');
         this.btn_units_out  = document.getElementById('units_out');
         this.input_field    = document.getElementById('number_start');
         this.select_field   = document.getElementById('units_in');
-        this.errors         = this.getErrorFields();
         /***
-         * @name tooltip thermo tooltip display
+         * @name errors
          * @type {Object}
-         * @method updateData
+         * @param {String} msg
+         * @param {Boolean} hidden
+         * @param {Boolean} active
+         * @method hide
+         * @method activate
+         * @method printMsg
          */
-        this.tooltip        = {
-            node_parent: document.getElementById('current'),
-            nodes_children: this.parent.querySelectorAll('span'),
-            node_temp: nodes_children[0],
-            node_unit: nodes_children[1],
-            data: this.parent.getAttribute('data-current'),
-            temp: null,
-            updateData: function(){},
-            printTemp: function(){}
-        };
+        this.errors         = this.getErrorFields();
+
         // init listen to selection inputs
         this.manageInputs();
     }
