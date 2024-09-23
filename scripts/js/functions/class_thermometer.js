@@ -14,14 +14,22 @@
  */
 /*------------------------------------------------------*/
 class Thermometer{
-    constructor(thermo_id){
+    constructor(thermo_id, tooltip_obj){
         // HTML Element Properties
         this.thermometer        = document.getElementById(thermo_id);
         this.mercury            = this.thermometer.querySelector('.thermo__mercury');
-        this.tooltip            = this.mercury.querySelector('.mercury__tooltip');
-        this.target             = this.tooltip.querySelector('span');
+        this.tooltip            = {
+            node_parent: document.getElementById('current'),
+            nodes_children: this.parent.querySelectorAll('span'),
+            node_temp: nodes_children[0],
+            node_unit: nodes_children[1],
+            data: this.parent.getAttribute('data-current'),
+            temp: null,
+            updateData: function(){},
+            printTemp: function(){}
+        };
         // Number Properties
-        this.number_current     = parseFloat(this.tooltip.getAttribute('data-current'));
+        this.number_current     = parseFloat(document.getElementById('current').getAttribute('data-current'));
     }
     /*------------------------------------------------------*/
     /***
@@ -37,7 +45,7 @@ class Thermometer{
         let duration = this.calculateTiming(number_obj.start, number_obj.end);
         this.thermometer.style.setProperty('--mercury-timing', duration);
         // update counter
-        this.updateCounter(number_obj, this.target);
+        this.updateCounter(number_obj, this.tooltip.node_temp);
     }
     /*------------------------------------------------------*/
     /***
@@ -75,5 +83,16 @@ class Thermometer{
         let result;
         result = Math.abs((start - end) * 0.0365);
         return `${result.toFixed(4)}s`
+    }
+    /*------------------------------------------------------*/
+    /***
+     * @name updateTooltip
+     * @type {method}
+     * @param {number} number_current converted to units out
+     * @param {number} index_current
+     */
+    /*------------------------------------------------------*/
+    updateTooltip(){
+
     }
 }

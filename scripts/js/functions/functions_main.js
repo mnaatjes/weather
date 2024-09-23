@@ -33,8 +33,9 @@ function random(minimum_value, maximum_value){
 /*------------------------------------------------------*/
 /***
  * @name strToUpper produces uppercase letter at string index
- * @param {string} string string to manipulate
- * @param {number} index index of string to alter
+ * @param {string}  string string to manipulate
+ * @param {number}  index index of string to alter
+ * @example         func(string-to-capitalize, index of capitalization);
  * @return {string} result: altered string
  */
 /*------------------------------------------------------*/
@@ -99,4 +100,43 @@ function fetchJSON(filepath, callback) {
     }
     xhttp.open('GET', filepath);
     xhttp.send();
+}
+/*------------------------------------------------------*/
+/***
+ * @name getElementState
+ * @type {Function}
+ * @param {HTMLElement} node
+ * @param {String}      value
+ * @example             <p>, "enabled" --> return true if attrib == value
+ * @return {Boolean}
+ */
+/*------------------------------------------------------*/
+function getElementState(node, value){
+    // get current value
+    let current = node.getAttribute('data-state');
+    // logic
+    if(current == value){return true;}
+    else if(current != value){return false;}
+}
+/*------------------------------------------------------*/
+/***
+ * @name setElementState
+ * @type {Function}
+ * @param {HTMLElement} node
+ * @param {String}      value
+ * @example             <p>, "enabled"
+ *                      if: "enabled" == value --> return false, cannot set
+ *                      if: "enabled" != value --> return true, value set
+ * @return {Boolean}
+ */
+/*------------------------------------------------------*/
+function setElementState(node, value){
+    // get current value to check
+    let current = getElementState(node, value);
+    // logic
+    if(current == true){return false;}
+    else if (current == false){
+        node.setAttribute('data-state', value);
+        return true;
+    }
 }

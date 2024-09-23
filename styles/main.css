@@ -11,6 +11,7 @@
 @import url(elements/element_thermo_small.css);
 @import url(elements/element_thermo.css);
 @import url(elements/element_info.css);
+@import url(elements/element_error.css);
 /*--------------------------------*/
 /* Imports: Resets */
 /*--------------------------------*/
@@ -45,6 +46,7 @@
     --color-white: #f5f5f5;
     --color-blue: #6495ed;
     --color-red: #ff6347;
+    --color-redContainer: #ff927e;
     --color-stroke: #333333;
     --color-strokeOff: #858585;
     --color-strokeDim: #C2C2C2;

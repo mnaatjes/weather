@@ -10,16 +10,11 @@
  */
 /*------------------------------------------------------*/
 class TempConverter{
-    constructor(input_number, units_to="fahrenheit"){
-        this.number         = parseFloat(input_number).toFixed(1);
+    constructor(input_number, units_from, units_to="fahrenheit", start_number){
+        this.number         = input_number;
+        this.start          = start_number;
+        this.units_from     = units_from;
         this.units_to       = units_to;
-        this.number_obj = {
-            start: null,
-            end: null,
-            units: '',
-            percentage: '',
-            counter_state: null
-        };
         // initialization:
         this.convertTo();
     }
@@ -31,6 +26,32 @@ class TempConverter{
      */
     /*------------------------------------------------------*/
     convertTo(){
+        // units_from
+        switch(this.units_from){
+            // fahrenheit
+            case ('fahrenheit'):
+                this.convertFromFahrenheit();
+                break;
+            // celsius
+            case ('celsius'):
+                this.convertFromCelsius();
+                break;
+            // kelvin
+            case ('kelvin'):
+                this.convertFromKelvin();
+                break;
+            default:
+                console.log('ERROR!');
+        }
+    }
+    /*------------------------------------------------------*/
+    /***
+     * @name convertFromFahrenheit
+     * @type {method}
+     * @return {float} result = converted float C and K
+     */
+    /*------------------------------------------------------*/
+    convertFromFahrenheit(){
         // set result property
         let result;
         // run conversion
@@ -39,15 +60,67 @@ class TempConverter{
         }
         else if(this.units_to == 'kelvin'){
             result = (this.number - 32) * (5/9) + 273.15;
-        } else if (this.units_to == 'fahrenheit'){
-            result = parseFloat(this.number);
         }
-        // format result and appent to obj
-        this.number_obj.end     = parseFloat(result.toFixed(1));
-        // append units to object
-        this.number_obj.units   = this.units_to
-        // get percentage and append
-        this.getPercentage(result.toFixed(1));
+        // compile number object
+        this.buildNumberObject(result);
+    }
+    /*------------------------------------------------------*/
+    /***
+     * @name convertFromCelsius
+     * @type {method}
+     * @return {float} result = converted float C and K
+     */
+    /*------------------------------------------------------*/
+    convertFromCelsius(){
+        // set result property
+        let result;
+        // run conversion
+        if(this.units_to == 'fahrenheit'){
+            result = (this.number * (9/5)) + 32;
+        }
+        else if(this.units_to == 'kelvin'){
+            result = this.number + 273.15;
+        }
+        // compile number object
+        this.buildNumberObject(result);
+    }
+    /*------------------------------------------------------*/
+    /***
+     * @name convertFromKelvin
+     * @type {method}
+     * @return {float} result = converted float C and K
+     */
+    /*------------------------------------------------------*/
+    convertFromKelvin(){
+        // set result property
+        let result;
+        // run conversion
+        if(this.units_to == 'fahrenheit'){
+            result = ((this.number - 273.15) * (9/5)) + 32;
+        }
+        else if(this.units_to == 'celsius'){
+            result = this.number - 273.15;
+        }
+        // compile number object
+        this.buildNumberObject(result);
+    }
+    /*------------------------------------------------------*/
+    /***
+     * @name buildNumberObject
+     * @type {method}
+     * @return start, end, counter_state
+     */
+    /*------------------------------------------------------*/
+    buildNumberObject(result){
+        // create number object
+        this.number_obj = {
+            start: null,
+            end: parseFloat(result.toFixed(1)),
+            units_from: this.units_from,
+            units_to: this.units_to,
+            percentage: this.getPercentage(result.toFixed(1)),
+            counter_state: this.compareNumbers(this.number, result)
+        };
     }
     /*------------------------------------------------------*/
     /***
@@ -56,11 +129,11 @@ class TempConverter{
      * @return start, end, counter_state
      */
     /*------------------------------------------------------*/
-    compareNumbers(){
-        if (this.number_obj.start > this.number_obj.end){
-            this.number_obj.counter_state = false;
-        } else if (this.number_obj.start < this.number_obj.end){
-            this.number_obj.counter_state = true;
+    compareNumbers(start, end){
+        if (start > end){
+            return false;
+        } else if (start < end){
+            return true;
         }
     }
     /*------------------------------------------------------*/
@@ -80,18 +153,6 @@ class TempConverter{
         // run function
         result = 100 * ((number - range_map[this.units_to].a) / (range_map[this.units_to].b - range_map[this.units_to].a));
         // convert float and return result
-        this.number_obj.percentage = `${result.toFixed(1)}%`;
-    }
-    /*------------------------------------------------------*/
-    /***
-     * @name setStartNum
-     * @type {method}
-     */
-    /*------------------------------------------------------*/
-    setStartNum(number){
-        // add to conversion obj
-        this.number_obj.start = parseFloat(number.toFixed(1));
-        // compage numbers to determine incre/decre
-        this.compareNumbers();
+        return `${result.toFixed(1)}%`;
     }
 }

@@ -1,0 +1,119 @@
+/*---------------------------------------------------------------*/
+/* CIS 174: Error
+/*---------------------------------------------------------------*/
+/*--------------------------------*/
+/* Error */
+/*--------------------------------*/
+.error,
+.error[data-state="hidden"] {
+    /*POSITION*/
+    z-index: 10;
+    position: absolute;
+    left: calc(50% - 75px);
+    padding: 6px;
+    width: 150px;
+    /*DISPLAY*/
+    display: none;
+    /*BACKGROUND*/
+    background: var(--color-white);
+    /*BORDER*/
+    border-right: 2px solid var(--color-red);
+    border-bottom: 2px solid var(--color-red);
+    border-left: 2px solid var(--color-red);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    /*TEXT*/
+    color: var(--color-red);
+    font-size: 12px;
+    /*SHADOW*/
+    box-shadow: 2px 2px 1px 2px rgba(255, 0, 0, 0.4);
+    /*TRANSITION*/
+    transition: var(--ui-transition);
+}
+/*--------------------------------*/
+/* Error */
+/*--------------------------------*/
+.error[data-state="active"] {display: block;}
+/*--------------------------------*/
+/* Error: heading */
+/*--------------------------------*/
+.error::after {
+    content: '\0021 \00a0 ERROR:';
+    /*POSITION*/
+    position: absolute;
+    top: -32px;
+    left: -2px;
+    padding: 6px 6px;
+    width: 150px;
+    /*BACKGROUND*/
+    background: var(--color-red);
+    /*BORDER*/
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-top: 2px solid var(--color-red);
+    border-right: 2px solid var(--color-red);
+    border-left: 2px solid var(--color-red);
+    /*TEXT*/
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-white);
+    /*SHADOW*/
+    box-shadow: 2px 0px 1px 2px rgba(255, 0, 0, 0.4);
+}
+/*--------------------------------*/
+/* Error: triangle */
+/*--------------------------------*/
+.error::before {
+    content: '';
+    /*POSITION*/
+    position: absolute;
+    left: calc(50% - 18px);
+    /*BORDER*/
+    border-width: 18px;
+    border-style: solid;
+}
+/*--------------------------------*/
+/* Error: type = input */
+/*--------------------------------*/
+#error--input {
+    /*POSITION*/
+    bottom: calc(100% + 18px);
+}
+#error--input::before {
+    /*POSITION*/
+    top: calc(100% + 2px);
+    /*BORDER*/
+    border-color: var(--color-red) transparent transparent transparent;
+}
+/*--------------------------------*/
+/* Error: type = units_out */
+/*--------------------------------*/
+#error--units-out {
+    /*POSITION*/
+    top: calc(100% + 32px + 12px);
+    /*TEXT*/
+    font-size: 12px;
+    font-weight: normal;
+}
+#error--units-out::before {
+    /*POSITION*/
+    bottom: calc(100% + 32px);
+    /*BORDER*/
+    border-color: transparent transparent var(--color-red) transparent;
+}
+/*--------------------------------*/
+/* Label */
+/*--------------------------------*/
+    /*GRID*/
+    /*FLEX*/
+    /*VARS*/
+    /*POSITION*/
+    /*DISPLAY*/
+    /*BACKGROUND*/
+    /*BORDER*/
+    /*TEXT*/
+    /*SHADOW*/
+    /*TRANSITION*/
+    /*ANIMATION*/
+    /*TRANSFORM*/
+    /*DEBUGGING*/

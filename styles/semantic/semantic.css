@@ -36,7 +36,9 @@ header {
     justify-self: center;
     align-self: center;
     /*POSITION*/
+    position: relative;
     width: 100%;
+    height: 100%;
     /*TEXT*/
     font-size: 24px;
     font-weight: 600;
@@ -104,6 +106,8 @@ main section[class*="__buttons"] {
     grid-column: 2;
     grid-row: 2;
     align-self: stretch;
+    /*POSITION*/
+    position: relative;
     /*DISPLAY*/
     display: flex;
     flex-direction: column;
