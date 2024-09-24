@@ -11,9 +11,9 @@
 class TempConverter{
     constructor(){
         this.temperatures = {
-            fahrenheit: {index: 0, abbv: 'F', a: 0, b: 100},
-            celsius: {index: 1, abbv: 'C', a: -17.8, b: 212},
-            kelvin: {index: 2, abbv: 'K', a: 255.4, b: 310.9}
+            fahrenheit: {index: 0, abbv: 'F', a: -460.0, b: 212.0},
+            celsius: {index: 1, abbv: 'C', a: -273.2, b: 100.0},
+            kelvin: {index: 2, abbv: 'K', a: 0.0, b: 373.0}
         };
     }
     /*------------------------------------------------------*/
@@ -147,10 +147,4 @@ class TempConverter{
             return true;
         }
     }
-    /*------------------------------------------------------*/
-    /***
-     * @name null
-     * @type {method}
-     */
-    /*------------------------------------------------------*/
 }

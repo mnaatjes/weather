@@ -24,26 +24,24 @@
                 <section class="__thermometer">
                     <div id="thermo_main" class="thermo">
                         <div class="thermo__bulb"></div>
-                        <div class="thermo__mercury">
+                        <div id="thermo_mercury" class="thermo__mercury">
                             <div id="current" class="mercury__tooltip" data-current=""><span>100.0</span><span>&deg;F</span></div>
                         </div>
-                        <div class="thermo__info__container">
-                            <div class="thermo__info__item" data-state="disabled" data-temp="">Surface of Venus</div>
-                            <div class="thermo__info__item" data-state="disabled" data-temp="">Surface of Venus</div>
+                        <div id="temp_events" class="thermo__info__container">
+                            <div class="thermo__info__item" data-state="disabled" data-temp="">Water Boils</div>
+                            <div class="thermo__info__item" data-state="disabled" data-temp="">Highest Temp in US</div>
                             <div class="thermo__info__item" data-state="disabled" data-temp="">Surface of Venus</div>
                             <div class="thermo__info__item" data-state="disabled" data-temp="">Surface of Venus</div>
                             <div class="thermo__info__item" data-state="disabled" data-temp="">Surface of Venus</div>
                             <div class="thermo__info__item" data-state="disabled" data-temp="">Surface of Venus</div>
                             <div class="thermo__info__item" data-state="disabled" data-temp="">Absolute Zero</div>
                         </div>
-                        <div class="thermo__temp__container">
-                            <div class="thermo__temp__item">867.0&deg;F</div>
-                            <div class="thermo__temp__item">-460.0&deg;F</div>
+                        <div id="temp_scale" class="thermo__temp__container">
+                            <div class="thermo__temp__item"><span></span>&deg;<span></span></div>
+                            <div class="thermo__temp__item"><span></span>&deg;<span></span></div>
                         </div>
                     </div>
                 </section>
-                <section class="__display--left">123.0&deg;C</section>
-                <section class="__display--right">123.0&deg;K</section>
                 <section class="__buttons">
                     <div id="error--input" class="error" data-state="hidden">This is an error message</div>
                     <div class="__row">
@@ -54,7 +52,7 @@
                             <option value="kelvin">&deg;K</option>
                         </select>
                     </div>
-                    <button id="convert" type="button" data-state="enabled" onclick="onClickConvert(this)">Convert</button>
+                    <button id="btn_convert" type="button" data-state="enabled">Convert</button>
                 </section>
             </main>
         </div>

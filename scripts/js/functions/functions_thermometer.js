@@ -17,5 +17,6 @@ const user = new User();
 /*------------------------------------------------------*/
 function onClickConvert(btn){
     // check selection and validate
-    user.onClick(btn);
+    //user.manageConvert();
+    console.log('Ooopsie!');
 }

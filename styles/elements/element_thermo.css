@@ -135,6 +135,7 @@
     position: absolute;
     top: 0;
     left: calc(var(--thermo-width) - 6px);
+    width: 150px;
     height: 100%;
     /*DISPLAY*/
     display: flex;
