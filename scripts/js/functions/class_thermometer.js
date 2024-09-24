@@ -29,18 +29,15 @@ class Thermometer{
             node_parent: document.getElementById('current'),
             node_temp: document.getElementById('current').childNodes[0],
             node_unit: document.getElementById('current').childNodes[1],
-            data: this.getData(),
+            data: () => JSON.parse(this.node_parent.getAttribute('data-current')),
+            test: () => {console.log(this.data);},
             temp: this.getCurrentTemp(),
             units: this.getCurrentUnits(),
             getCurrentTemp: function(){},
             getCurrentUnits: function(){},
-            getData: function(){ return JSON.parse(this.node_parent.getAttribute('data-current'));},
-            updateData: function(){
-                let temp_obj = {
-                    temp: null,
-                    units: null,
-                    active: false
-                }
+            updateData: function(data_obj){
+                // imbed data
+                this.node_parent.setAttribute('data-current', JSON.stringify(data_obj));
             },
             printTemp: function(){}
         };

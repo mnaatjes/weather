@@ -13,7 +13,7 @@
  * @method onClick
  */
 /*------------------------------------------------------*/
-class User {
+class User extends TempConverter {
     /*------------------------------------------------------*/
     /***
      * @name constructor
@@ -27,6 +27,10 @@ class User {
      */
     /*------------------------------------------------------*/
     constructor(){
+        // TempConverter constructor
+        super();
+        let x = this.convertTo('celsius', 'kelvin', 45.5);
+        console.log(this.getPercentage('kelvin', 417.7));
         // element properties
         this.btn_convert    = document.getElementById('convert');
         this.btn_units_out  = document.getElementById('units_out');
@@ -44,8 +48,27 @@ class User {
          */
         this.errors         = this.getErrorFields();
 
+        // generate default state
+        this.init();
         // init listen to selection inputs
         this.manageInputs();
+    }
+    /*------------------------------------------------------*/
+    /***
+     * @name init
+     * @type {Method}
+     */
+    /*------------------------------------------------------*/
+    init(){
+        let init_data  = {
+            fahrenheit: {temp: 100.0, active: true},
+            celsius: {temp: this.convertTo('fahrenheit', 'celsius', 100.0), active: false},
+            kelvin: {temp: this.convertTo('fahrenheit', 'kelvin', 100.0), active: false},
+        };
+        console.log(init_data);
+        
+        // set initial values
+
     }
     /*------------------------------------------------------*/
     /***
@@ -61,13 +84,12 @@ class User {
          * @param {number} selected_out index of units object
          * @return {number} updated index
          */
-        function updateUnitsIn(input, selected_out=null){
+        let updateUnitsIn = (input, selected_out) => {
             let choices = input.querySelectorAll('option');
             // get selected units
             for(let i = 0; i < choices.length; i++){
                 // define index of choices rel to units_object obj
-                let temp_obj    = units_object.find((obj) => obj.units === choices[i].value);
-                let out_index   = units_object.indexOf(temp_obj);
+                let out_index = this.temperatures[choices[i].value].index;
                 // if selected
                 if(selected_out == out_index){
                     choices[i].style.display = 'none';
@@ -83,7 +105,7 @@ class User {
          * @param {number} selected_in index of units object
          * @return {number} updated index
          */
-        function updateUnitsOut(btn, selected_in=null){
+        let updateUnitsOut = (btn, selected_in) => {
             // get index from element
             let btn_index = parseInt(btn.getAttribute('data-index'));
             // logic
@@ -104,7 +126,7 @@ class User {
                     console.log('ERROR!');
             }
             // print unit
-            btn.innerHTML = strToUpper(units_object[btn_index].units, 0);
+            btn.innerHTML = strToUpper(Object.entries(this.temperatures)[btn_index][0], 0);
             // set new index
             btn.setAttribute('data-index', btn_index);
             // return selected index
@@ -117,8 +139,7 @@ class User {
          */
         this.btn_units_out.addEventListener('click', (event) => {
             // get selected units_in
-            let temp_obj        = units_object.find((obj) => obj.units === this.getUnitsIn());
-            let selected_in     = units_object.indexOf(temp_obj);
+            let selected_in     = this.temperatures[this.select_field.value].index;
             // update selected units_out
             let selected_out    = updateUnitsOut(event.target, selected_in);
             // update selected units_in
@@ -137,9 +158,9 @@ class User {
         // clear errors
         this.clearErrors();
         // collect latest values
-        this.units_in   = this.getUnitsIn();
-        this.units_out  = this.getUnitsOut();
-        this.number     = this.getNumber(this.units_in);
+        let units_in    = this.select_field.value;
+        this.units_out  = null;
+        this.number     = this.getNumber(units_in);
         this.start      = this.getStartNumber(document.getElementById('current'));
 
     }
@@ -257,29 +278,20 @@ class User {
                 this.displayError('Please enter a number!', 'error--input');
             } else {
                 // get range from units
-                let temp_obj = units_object.find((obj) => obj.units === units_in);
-                let min = temp_obj.a;
-                let max = temp_obj.b;
+                let min     = this.temperatures[units_in].a;
+                let max     = this.temperatures[units_in].b;
+                let abbv    = this.temperatures[units_in].abbv;
                 // validate range
                 if(result >= min && result <= max){
                     // number valid
                     return parseFloat(result.toFixed(1));
                 } else {
                     // report error
-                    let msg = `Numbers in &deg;${temp_obj.abbv} must be between: <b>${min} and ${max}</b>`;
+                    let msg = `Numbers in &deg;${abbv} must be between: <b>${min} and ${max}</b>`;
                     this.displayError(msg, 'error--input');
                 }
             }
         }
-    }
-    /*------------------------------------------------------*/
-    /***
-     * @name getUnitsIn
-     * @type {method}
-     */
-    /*------------------------------------------------------*/
-    getUnitsIn(){
-        return this.select_field.value;
     }
     /*------------------------------------------------------*/
     /***
@@ -288,9 +300,11 @@ class User {
      */
     /*------------------------------------------------------*/
     getUnitsOut(){
+        // TODO: grab units out
         // grab index from element attrib
         let btn_units_out   = document.getElementById('units_out');
-        let index_out       = btn_units_out.getAttribute('data-index');
+        let index_out       = parseInt(btn_units_out.getAttribute('data-index'));
+        Object.entries(this.temperatures)[btn_index][0], 0;
         // spit out
         return units_object[index_out].units;
     }

@@ -5,18 +5,16 @@
 /***
  * @name TempConverter
  * @type {Class}
- * @param {float} input_number
- * @property {Object} conversions
+ * @property {Object} temperatures
  */
 /*------------------------------------------------------*/
 class TempConverter{
-    constructor(input_number, units_from, units_to="fahrenheit", start_number){
-        this.number         = input_number;
-        this.start          = start_number;
-        this.units_from     = units_from;
-        this.units_to       = units_to;
-        // initialization:
-        this.convertTo();
+    constructor(){
+        this.temperatures = {
+            fahrenheit: {index: 0, abbv: 'F', a: 0, b: 100},
+            celsius: {index: 1, abbv: 'C', a: -17.8, b: 212},
+            kelvin: {index: 2, abbv: 'K', a: 255.4, b: 310.9}
+        };
     }
     /*------------------------------------------------------*/
     /***
@@ -25,21 +23,18 @@ class TempConverter{
      * @return {float} result = converted float C and K
      */
     /*------------------------------------------------------*/
-    convertTo(){
+    convertTo(units_from, units_to, number){
         // units_from
-        switch(this.units_from){
+        switch(units_from){
             // fahrenheit
             case ('fahrenheit'):
-                this.convertFromFahrenheit();
-                break;
+                return this.convertFromFahrenheit(units_to, number);
             // celsius
             case ('celsius'):
-                this.convertFromCelsius();
-                break;
+                return this.convertFromCelsius(units_to, number);
             // kelvin
             case ('kelvin'):
-                this.convertFromKelvin();
-                break;
+                return this.convertFromKelvin(units_to, number);
             default:
                 console.log('ERROR!');
         }
@@ -51,18 +46,18 @@ class TempConverter{
      * @return {float} result = converted float C and K
      */
     /*------------------------------------------------------*/
-    convertFromFahrenheit(){
+    convertFromFahrenheit(units_to, number){
         // set result property
         let result;
         // run conversion
-        if(this.units_to == 'celsius'){
-            result = (this.number - 32) * (5/9);
+        if(units_to == 'celsius'){
+            result = (number - 32) * (5/9);
         }
-        else if(this.units_to == 'kelvin'){
-            result = (this.number - 32) * (5/9) + 273.15;
-        }
-        // compile number object
-        this.buildNumberObject(result);
+        else if(units_to == 'kelvin'){
+            result = (number - 32) * (5/9) + 273.15;
+        } else if (units_to == 'fahrenheit'){result = number;}
+        // return converted number
+        return parseFloat(result.toFixed(1));
     }
     /*------------------------------------------------------*/
     /***
@@ -71,18 +66,18 @@ class TempConverter{
      * @return {float} result = converted float C and K
      */
     /*------------------------------------------------------*/
-    convertFromCelsius(){
+    convertFromCelsius(units_to, number){
         // set result property
         let result;
         // run conversion
-        if(this.units_to == 'fahrenheit'){
-            result = (this.number * (9/5)) + 32;
+        if(units_to == 'fahrenheit'){
+            result = (number * (9/5)) + 32;
         }
-        else if(this.units_to == 'kelvin'){
-            result = this.number + 273.15;
-        }
-        // compile number object
-        this.buildNumberObject(result);
+        else if(units_to == 'kelvin'){
+            result = number + 273.15;
+        } else if (units_to == 'celsius'){result = number;}
+        // return converted number
+        return parseFloat(result.toFixed(1));
     }
     /*------------------------------------------------------*/
     /***
@@ -91,18 +86,18 @@ class TempConverter{
      * @return {float} result = converted float C and K
      */
     /*------------------------------------------------------*/
-    convertFromKelvin(){
+    convertFromKelvin(units_to, number){
         // set result property
         let result;
         // run conversion
-        if(this.units_to == 'fahrenheit'){
-            result = ((this.number - 273.15) * (9/5)) + 32;
+        if(units_to == 'fahrenheit'){
+            result = ((number - 273.15) * (9/5)) + 32;
         }
-        else if(this.units_to == 'celsius'){
-            result = this.number - 273.15;
-        }
-        // compile number object
-        this.buildNumberObject(result);
+        else if(units_to == 'celsius'){
+            result = number - 273.15;
+        } else if (units_to == 'kelvin'){result = number;}
+        // return converted number
+        return parseFloat(result.toFixed(1));
     }
     /*------------------------------------------------------*/
     /***
@@ -111,16 +106,32 @@ class TempConverter{
      * @return start, end, counter_state
      */
     /*------------------------------------------------------*/
-    buildNumberObject(result){
+    buildNumberObject(units, number){
         // create number object
-        this.number_obj = {
-            start: null,
-            end: parseFloat(result.toFixed(1)),
-            units_from: this.units_from,
-            units_to: this.units_to,
-            percentage: this.getPercentage(result.toFixed(1)),
-            counter_state: this.compareNumbers(this.number, result)
+        let number_obj = {
+            number: parseFloat(number.toFixed(1)),
+            units: units,
+            percentage: this.getPercentage(units, number.toFixed(1)),
         };
+        return number_obj;
+    }
+    /*------------------------------------------------------*/
+    /***
+     * @name getPercentage
+     * @type {Method}
+     * @param {String} units
+     * @param {Number} number float
+     */
+    /*------------------------------------------------------*/
+    getPercentage(units, number){
+        let result = 0;
+        // define range map
+        let min = this.temperatures[units].a;
+        let max = this.temperatures[units].b;
+        // run function
+        result = 100 * ((number - min) / (max - min));
+        // convert float and return result
+        return `${result.toFixed(1)}%`;
     }
     /*------------------------------------------------------*/
     /***
@@ -138,21 +149,8 @@ class TempConverter{
     }
     /*------------------------------------------------------*/
     /***
-     * @name getPercentage
+     * @name null
      * @type {method}
      */
     /*------------------------------------------------------*/
-    getPercentage(number){
-        let result = 0;
-        // define range map
-        let range_map = {
-            fahrenheit: {a: 0, b: 100},
-            celsius: {a: -17.8, b: 212},
-            kelvin: {a: 255.4, b: 310.9}
-        };
-        // run function
-        result = 100 * ((number - range_map[this.units_to].a) / (range_map[this.units_to].b - range_map[this.units_to].a));
-        // convert float and return result
-        return `${result.toFixed(1)}%`;
-    }
 }
