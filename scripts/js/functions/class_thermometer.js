@@ -5,6 +5,7 @@
 /***
  * @name Thermometer
  * @type {Class}
+ * @description 
  * @property {HTMLElement} thermo
  * @property {HTMLElement} mercury
  * @property {HTMLElement} tooltip
@@ -20,6 +21,11 @@ class Thermometer{
         /***
          * @name temp_scale
          * @type {Object}
+         * @property {HTMLElement} node_parent
+         * @property {HTMLElement} node_max
+         * @property {HTMLElement} node_min
+         * @method setMax
+         * @method setMin
          */
         this.temp_scale         = {
             node_parent: document.getElementById('temp_scale'),
@@ -41,6 +47,11 @@ class Thermometer{
         /***
          * @name temp_events
          * @type {Object}
+         * @property {HTMLElement} node_parent
+         * @property {Array} event_items
+         * @method setEvents init / updates dataset
+         * @method updateEvents changes state from disabled to enabled 
+         * @method resetEvents clears states to default
          */
         this.temp_events        = {
             node_parent: document.getElementById('temp_events'),
@@ -48,9 +59,9 @@ class Thermometer{
                 {desc: 'Water Boils', temp: 100.0, units: 'celsius', abbv: 'C', state: 'disabled'},
                 {desc: 'Highest Temp in US', temp: 56.7, units: 'celsius', abbv: 'C', state: 'disabled'},
                 {desc: 'Water Freezes', temp: 0.0, units: 'celsius', abbv: 'C', state: 'disabled'},
-                {desc: 'Empty', temp: -30.0, units: 'celsius', abbv: 'C', state: 'disabled'},
-                {desc: 'Empty', temp: -90.0, units: 'celsius', abbv: 'C', state: 'disabled'},
-                {desc: 'Coldest Temp on Moon', temp: -173.0, units: 'celsius', abbv: 'C', state: 'disabled'},
+                {desc: 'Alaska Coldest Temp', temp: -60.0, units: 'celsius', abbv: 'C', state: 'disabled'},
+                {desc: 'Xenon Melts', temp: -111.7, units: 'celsius', abbv: 'C', state: 'disabled'},
+                {desc: 'Moon Coldest Temp', temp: -173.0, units: 'celsius', abbv: 'C', state: 'disabled'},
                 {desc: 'Absolute Zero', temp: -273.0, units: 'celsius', abbv: 'C', state: 'disabled'}
             ],
             setEvents: function(data_obj){
@@ -83,7 +94,7 @@ class Thermometer{
                     let node = nodes[i];
                     let item = this.event_items[i];
                     // match temp
-                    if(temp == item.temp){
+                    if(temp == item.temp - 1 || temp == item.temp + 1){
                     // update data attribute
                     node.setAttribute('data-state', 'enabled');
                     // update data object
@@ -114,7 +125,6 @@ class Thermometer{
     animateThermometer(number_obj, tooltip){
         // set percentage mercury
         this.thermometer.style.setProperty('--mercury-height', number_obj.percentage);
-        // set color variable
         // set timing
         let duration = this.calculateTiming(number_obj.start, number_obj.end);
         this.thermometer.style.setProperty('--mercury-timing', duration);
@@ -137,7 +147,8 @@ class Thermometer{
             count = parseFloat(count.toFixed(1));
             // update tooltip
             target.innerHTML = count.toFixed(1);
-            // TODO: update mercury color gradient
+            // update mercury color gradient
+            this.updateMercuryColor(number_obj, count);
             // check and update temp events
             this.temp_events.updateEvents(count);
             // check for end state
@@ -164,11 +175,17 @@ class Thermometer{
      * @type {method}
      */
     /*------------------------------------------------------*/
-    updateMercuryColor(number_obj){
+    updateMercuryColor(number_obj, count){
         // get properties
-        // temp
-        // percentage
-        // compare percentage with scale
-        // update css color variable
+        let current = count
+        let max     = number_obj.max;
+        let min     = number_obj.min;
+        // get percentage of count
+        let percent = parseFloat((((count - min) / (max - min))).toFixed(2));
+        let red     = `${percent * 25 - 10}%`;
+        let blue    = `${percent * 40 - 10}%`;
+        // set variables
+        this.thermometer.style.setProperty('--mercury-percent-red', red);
+        this.thermometer.style.setProperty('--mercury-percent-blue', blue);
     }
 }

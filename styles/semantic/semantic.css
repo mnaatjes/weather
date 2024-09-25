@@ -27,6 +27,22 @@ nav {
     transition: var(--ui-transition);
 }
 /*--------------------------------*/
+/* Logo */
+/*--------------------------------*/
+nav i[class*="logo"] {
+    /*TEXT*/
+    font-size: 48px;
+    color: var(--color-blue);
+}
+/*--------------------------------*/
+/* Logo */
+/*--------------------------------*/
+nav i[class*="menu"] {
+    /*TEXT*/
+    font-size: 32px;
+    color: var(--color-blue);
+}
+/*--------------------------------*/
 /* Header */
 /*--------------------------------*/
 header {
@@ -51,13 +67,14 @@ main {
     /*GRID*/
     grid-column: 1 / span 3;
     grid-row: 2;
+    align-self: center;
     /*POSITION*/
     margin-bottom: 12px;
-    height: 100%;
+    /*height: 100%;*/
     /*DISPLAY*/
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 328px calc(100% - 328px);
+    grid-template-rows: 328px auto;
     grid-gap: 12px;
 }
 /*main > * {    border: 1px solid red;}*/
@@ -120,9 +137,10 @@ main section[class*="__buttons"] {
     font-size: 16px;
 }
 /*--------------------------------*/
-/* Section: __row */
+/* Section: __row(enabled) */
 /*--------------------------------*/
-section div[class*="__row"] {
+section div[class*="__row"],
+section div[class*="__row"][data-state="enabled"] {
     /*POSITION*/
     margin-bottom: 12px;
     width: 100%;
@@ -136,6 +154,15 @@ section div[class*="__row"] {
     /*BORDER*/
     border: 2px solid var(--color-stroke);
     border-radius: 8px;
+}
+/*--------------------------------*/
+/* Section: __row(disabled) */
+/*--------------------------------*/
+section div[class*="__row"][data-state="disabled"] {
+    /*BORDER*/
+    border-color: var(--color-strokeOff);
+    /*BACKGROUND*/
+    background: var(--color-strokeDim);
 }
 /*--------------------------------*/
 /* Footer */

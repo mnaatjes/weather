@@ -12,12 +12,12 @@
     </head>
     <body>
         <nav>
-            <b>Logo</b>
-            <i class="fa fa-bars"></i>
+            <i class="logo fa-solid fa-cloud-bolt"></i>
+            <i class="menu fa fa-bars"></i>
         </nav>
         <div class="grid">
             <header>
-                <div id="error--units-out" class="error" data-state="hidden">This is an error message</div>
+                <div id="hint_units_out" class="hint" data-state="active">Click here to select <b>output</b> temp</div>
                 <button id="units_out" type="button" data-index="1" data-state="enabled">Celsius</button>
             </header>
             <main>
@@ -44,9 +44,10 @@
                 </section>
                 <section class="__buttons">
                     <div id="error--input" class="error" data-state="hidden">This is an error message</div>
-                    <div class="__row">
+                    <div id="hint_units_in" class="hint" data-state="active">Click here to select <b>input</b> temp</div>
+                    <div id="input_container" class="__row" data-state="enabled">
                         <input id="number_start" type="text" name="number_start" maxlength="5" size="3" placeholder="867.0" data-state="enabled">
-                        <select id="units_in" name="units_in">
+                        <select id="units_in" name="units_in" data-state="enabled">
                             <option value="fahrenheit">&deg;F</option>
                             <option value="celsius" style="display:none;">&deg;C</option>
                             <option value="kelvin">&deg;K</option>
@@ -62,5 +63,8 @@
     <script src="scripts/js/functions/class_temp_converter.js" type="text/Javascript"></script>
     <script src="scripts/js/functions/class_user.js" type="text/Javascript"></script>
     <script src="scripts/js/functions/class_thermometer.js" type="text/Javascript"></script>
-    <script src="scripts/js/functions/functions_thermometer.js" type="text/Javascript"></script>
+    <script>
+        // instantiate class
+        const user = new User();
+    </script>
 </html>

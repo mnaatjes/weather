@@ -10,7 +10,8 @@
     --thermo-height: 240px;
     --mercury-height: 100%;
     --mercury-timing: 10s;
-    --mercury-end-color: #ff6347;
+    --mercury-percent-red: 25%;
+    --mercury-percent-blue: 40%;
     /*POSITION*/
     position: relative;
     width: var(--thermo-width);
@@ -59,7 +60,7 @@
     left: 0;
     /*DISPLAY*/
     /*BACKGROUND*/
-    background-image: linear-gradient(var(--mercury-end-color) 0% 25%, cornflowerblue 75%);
+    background-image: linear-gradient(#ff6347 0% var(--mercury-percent-red), #6495ed var(--mercury-percent-blue));
     /*BORDER*/
     border-top-right-radius: var(--thermo-width);
     border-top-left-radius: var(--thermo-width);

@@ -30,6 +30,8 @@ button {
 /*--------------------------------*/
 button[data-state="enabled"] {
     cursor: pointer;
+    pointer-events: auto;
+    user-select: none;
     /*BACKGROUND*/
     background: var(--color-stroke);
     /*BORDER*/
@@ -53,6 +55,9 @@ button[data-state="enabled"]:active {
 /* Button (disabled) */
 /*--------------------------------*/
 button[data-state="disabled"] {
+    cursor: default;
+    pointer-events: none;
+    user-select: none;
     /*BACKGROUND*/
     background: var(--color-strokeDim);
     /*BORDER*/

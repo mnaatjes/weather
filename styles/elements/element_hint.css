@@ -1,0 +1,65 @@
+/*---------------------------------------------------------------*/
+/* CIS 174: hint
+/*---------------------------------------------------------------*/
+/*--------------------------------*/
+/* hint */
+/*--------------------------------*/
+.hint,
+.hint[data-state="hidden"] {
+    /*POSITION*/
+    z-index: 10;
+    position: absolute;
+    left: -80px;
+    padding: 6px;
+    width: 75px;
+    /*DISPLAY*/
+    display: none;
+    /*BACKGROUND*/
+    background: var(--color-white);
+    /*BORDER*/
+    border: 2px solid var(--color-blue);
+    border-radius: 8px;
+    /*TEXT*/
+    color: var(--color-blue);
+    font-size: 12px;
+    font-weight: normal;
+    /*SHADOW*/
+    box-shadow: 2px 2px 1px 0px rgba(0, 0, 255, 0.4);
+    /*TRANSITION*/
+    transition: var(--ui-transition);
+}
+/*--------------------------------*/
+/* hint */
+/*--------------------------------*/
+.hint[data-state="active"] {display: block;}
+/*--------------------------------*/
+/* hint: triangle */
+/*--------------------------------*/
+.hint::before {
+    content: '';
+    /*POSITION*/
+    position: absolute;
+    bottom: calc(50%);
+    left: calc(100% + 2px);
+    /*BORDER*/
+    border-width: 18px;
+    border-style: solid;
+    /*BORDER*/
+    border-color: transparent transparent transparent var(--color-blue);
+}
+/*--------------------------------*/
+/* Label */
+/*--------------------------------*/
+    /*GRID*/
+    /*FLEX*/
+    /*VARS*/
+    /*POSITION*/
+    /*DISPLAY*/
+    /*BACKGROUND*/
+    /*BORDER*/
+    /*TEXT*/
+    /*SHADOW*/
+    /*TRANSITION*/
+    /*ANIMATION*/
+    /*TRANSFORM*/
+    /*DEBUGGING*/

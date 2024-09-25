@@ -5,11 +5,19 @@
 /***
  * @name TempConverter
  * @type {Class}
+ * @description 
  * @property {Object} temperatures
  */
 /*------------------------------------------------------*/
 class TempConverter{
     constructor(){
+        /***
+         * @name temperatures
+         * @type {Object}
+         * @property {Object} fahrenheit
+         * @property {Object} celsius
+         * @property {Object} kelvin
+         */
         this.temperatures = {
             fahrenheit: {index: 0, abbv: 'F', a: -460.0, b: 212.0},
             celsius: {index: 1, abbv: 'C', a: -273.2, b: 100.0},

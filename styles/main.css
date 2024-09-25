@@ -12,6 +12,7 @@
 @import url(elements/element_thermo.css);
 @import url(elements/element_info.css);
 @import url(elements/element_error.css);
+@import url(elements/element_hint.css);
 /*--------------------------------*/
 /* Imports: Resets */
 /*--------------------------------*/
@@ -96,7 +97,7 @@ body {
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: auto calc(100vh - (200px));
     justify-items: stretch;
-    align-items: center;
+    /*align-items: center;*/
     grid-gap: 12px;
     /*BACKGROUND*/
     background: whitesmoke;

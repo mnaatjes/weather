@@ -4,7 +4,11 @@
 /*--------------------------------*/
 /* Select */
 /*--------------------------------*/
-select {
+select,
+select[data-state="enabled"] {
+    pointer-events: auto;
+    user-select: none;
+    outline: none;
     /*POSITION*/
     padding: 12px 6px 12px 0px;
     /*DISPLAY*/
@@ -14,11 +18,24 @@ select {
     border: none;
     /*TEXT*/
     color: var(--color-stroke);
-    /*SHADOW*/
-    /*TRANSITION*/
-    /*ANIMATION*/
-    /*TRANSFORM*/
-    /*DEBUGGING*/
+}
+/*--------------------------------*/
+/* Select */
+/*--------------------------------*/
+select[data-state="disabled"] {
+    pointer-events: none;
+    user-select: none;
+    /*BACKGROUND*/
+    background: var(--color-strokeDim);
+    /*TEXT*/
+    color: var(--color-strokeOff);
+}
+/*--------------------------------*/
+/* Select - Option */
+/*--------------------------------*/
+select option {
+    /*BORDER*/
+    border-radius: 2px;
 }
 /*--------------------------------*/
 /* Select */

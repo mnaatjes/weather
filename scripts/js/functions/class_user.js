@@ -1,10 +1,11 @@
 //-------------------------------------------------------------------------------------------------------
 // CIS 174: Class - User
 //-------------------------------------------------------------------------------------------------------
-/*------------------------------------------------------*/
+/*----------------------------------------------------------*/
 /***
  * @name User
  * @type {Class}
+ * @description 
  * @param {HTMLElement} input_field
  * @param {HTMLElement} button
  * @param {HTMLElement} error_field
@@ -12,7 +13,7 @@
  * @method manageInputs
  * @method onClick
  */
-/*------------------------------------------------------*/
+/*----------------------------------------------------------*/
 class User extends TempConverter {
     /*------------------------------------------------------*/
     /***
@@ -30,7 +31,7 @@ class User extends TempConverter {
         // TempConverter constructor
         super();
         // instantiate thermo
-        this.thermometer    = new Thermometer();
+        this.thermometer = new Thermometer();
         /***
          * @name btn_convert
          * @type {Object}
@@ -40,7 +41,7 @@ class User extends TempConverter {
          * @method enable
          * @method disable
          */
-        this.btn_convert    = {
+        this.btn_convert = {
             node: document.getElementById('btn_convert'),
             enabled: getElementState(document.getElementById('btn_convert'), 'enabled'),
             disabled: getElementState(document.getElementById('btn_convert'), 'disabled'),
@@ -69,7 +70,7 @@ class User extends TempConverter {
          * @method enable
          * @method disable
          */
-        this.btn_units  = {
+        this.btn_units = {
             node: document.getElementById('units_out'),
             getIndex: function(){return this.node.getAttribute('data-index');},
             enabled: getElementState(document.getElementById('units_out'), 'enabled'),
@@ -100,7 +101,7 @@ class User extends TempConverter {
          * @method disable
          * @method clear
          */
-        this.input_field    = {
+        this.input_field = {
             node: document.getElementById('number_start'),
             getValue: function(){return document.getElementById('number_start').value;},
             enabled: getElementState(document.getElementById('number_start'), 'enabled'),
@@ -132,7 +133,7 @@ class User extends TempConverter {
          * @method enable
          * @method disable
          */
-        this.input_select   = {
+        this.input_select = {
             node: document.getElementById('units_in'),
             options: document.getElementById('units_in').children,
             getValue: function(){return document.getElementById('units_in').value;},
@@ -209,6 +210,68 @@ class User extends TempConverter {
         };
         // call initializing methods
         this.init();
+        /***
+         * @name input_container
+         * @type {HTMLElement}
+         * @property {HTMLElement} node
+         * @property {Boolean} enabled
+         * @property {Boolean} disabled
+         * @method enable
+         * @method disable
+         */
+        this.input_container = {
+            node: document.getElementById('input_container'),
+            enabled: getElementState(document.getElementById('input_container'), 'enabled'),
+            disabled: getElementState(document.getElementById('input_container'), 'disabled'),
+            enable: function(){
+                // update attribute
+                this.node.setAttribute('data-state', 'enabled');
+                // set properties
+                this.enabled    = true;
+                this.disabled   = false;
+            },
+            disable: function(){
+                // update attribute
+                this.node.setAttribute('data-state', 'disabled');
+                // set properties
+                this.enabled    = false;
+                this.disabled   = true;
+            }
+        };
+        /***
+         * @name hints
+         * @type {Object}
+         * @property {HTMLCollection} nodes
+         * @property {Boolean} enabled
+         * @property {Boolean} disabled
+         * @method enable
+         * @method disable
+         */
+        this.hints = {
+            nodes: document.getElementsByClassName('hint'),
+            enabled: true,
+            disabled: false,
+            enable: function(){
+                // loop nodes
+                for(let i = 0; i < this.nodes.length; i++){
+                    // update attribute
+                    this.nodes[i].setAttribute('data-state', 'enabled');
+                }
+                // set properties
+                this.enabled    = true;
+                this.disabled   = false;
+            },
+            disable: function(){
+                // loop nodes
+                for(let i = 0; i < this.nodes.length; i++){
+                    // update attribute
+                    this.nodes[i].setAttribute('data-state', 'disabled');
+                }
+                // set properties
+                this.enabled    = false;
+                this.disabled   = true;
+            }
+        };
     }
     /*------------------------------------------------------*/
     /***
@@ -373,12 +436,11 @@ class User extends TempConverter {
         this.btn_convert.node.addEventListener('click', (event) => {
             // manage converting of number
             this.manageConvert();
-            // TODO: pause listener event
         });
     }
     /*------------------------------------------------------*/
     /***
-     * @name onClick
+     * @name manageConvert
      * @type {method}
      */
     /*------------------------------------------------------*/
@@ -391,7 +453,9 @@ class User extends TempConverter {
         let number_start    = this.tooltip.getData().temp;
         let number_end      = this.getNumber(units_in);
         // check if number validated
-        if(number_end != false){
+        if(number_end !== false){
+            // hide hints
+            this.hints.disable();
             // run conversion
             let converted_num   = this.convertTo(units_in, units_out, number_end);
             let number_object   = {
@@ -399,7 +463,9 @@ class User extends TempConverter {
                 end: converted_num,
                 units: units_out,
                 percentage: this.getPercentage(units_out, converted_num),
-                counter_state: this.compareNumbers(number_start, converted_num)
+                counter_state: this.compareNumbers(number_start, converted_num),
+                min: this.temperatures[units_out].a,
+                max: this.temperatures[units_out].b
             };
             // disable input elements
             this.disableInputs();
@@ -407,7 +473,6 @@ class User extends TempConverter {
             this.thermometer.animateThermometer(number_object, this.tooltip);
             // listen to transition
             let event_transition = () => {
-                console.log('Transition Ended');
                 // enable input elements
                 this.enableInputs();
                 // update tooltip data
@@ -426,7 +491,6 @@ class User extends TempConverter {
             // run event listener: transition
             this.thermometer.mercury.addEventListener('transitionend', event_transition);
         }
-
     }
     /*------------------------------------------------------*/
     /***
@@ -437,19 +501,20 @@ class User extends TempConverter {
     enableInputs(){
         // input field
         this.input_field.enable();
+        this.input_field.clear();
         // select field
         this.input_select.enable();
         // units_out button
         this.btn_units.enable();
         // convert button
         this.btn_convert.enable();
-        // TODO: Input Container
+        // Input Container
+        this.input_container.enable();
     }
     /*------------------------------------------------------*/
     /***
      * @name disableInput
      * @type {method}
-     * TODO: finish disabling inputs
      */
     /*------------------------------------------------------*/
     disableInputs(){
@@ -461,7 +526,8 @@ class User extends TempConverter {
         this.btn_units.disable();
         // convert button
         this.btn_convert.disable();
-        // TODO: Input Container
+        // Input Container
+        this.input_container.disable();
     }
     /*------------------------------------------------------*/
     /***
@@ -501,21 +567,5 @@ class User extends TempConverter {
                 }
             }
         }
-    }
-    /*------------------------------------------------------*/
-    /***
-     * @name getUnitsOut
-     * @type {method}
-     * TODO: update how this data is pulled
-     */
-    /*------------------------------------------------------*/
-    getUnitsOut(){
-        // TODO: grab units out
-        // grab index from element attrib
-        let btn_units_out   = document.getElementById('units_out');
-        let index_out       = parseInt(btn_units_out.getAttribute('data-index'));
-        Object.entries(this.temperatures)[btn_index][0], 0;
-        // spit out
-        return units_object[index_out].units;
     }
 }

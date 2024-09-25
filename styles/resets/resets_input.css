@@ -22,6 +22,8 @@ input[type="text"] {
 /* Button (enabled) */
 /*--------------------------------*/
 input[data-state="enabled"] {
+    pointer-events: auto;
+    user-select: none;
     /*BACKGROUND*/
     background: var(--color-white);
     /*TEXT*/
@@ -36,6 +38,7 @@ input[data-state="enabled"]:focus {
 /*--------------------------------*/
 input[data-state="disabled"] {
     pointer-events: none;
+    user-select: none;
     /*BACKGROUND*/
     background: var(--color-strokeDim);
     /*TEXT*/
