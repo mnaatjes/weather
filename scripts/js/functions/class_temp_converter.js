@@ -2,16 +2,18 @@
 // CIS 174: Class - TempConverter
 //-------------------------------------------------------------------------------------------------------
 /*------------------------------------------------------*/
-/***
+/**
  * @name TempConverter
  * @type {Class}
- * @description 
+ * @namespace TempConverter
+ * @description This class converts temperatures from x to y
  * @property {Object} temperatures
  */
 /*------------------------------------------------------*/
 class TempConverter{
     constructor(){
-        /***
+        /**
+         * @memberof TempConverter
          * @name temperatures
          * @type {Object}
          * @property {Object} fahrenheit
@@ -25,7 +27,7 @@ class TempConverter{
         };
     }
     /*------------------------------------------------------*/
-    /***
+    /**
      * @name convertTo
      * @type {method}
      * @return {float} result = converted float C and K
@@ -48,7 +50,7 @@ class TempConverter{
         }
     }
     /*------------------------------------------------------*/
-    /***
+    /**
      * @name convertFromFahrenheit
      * @type {method}
      * @return {float} result = converted float C and K
@@ -68,7 +70,7 @@ class TempConverter{
         return parseFloat(result.toFixed(1));
     }
     /*------------------------------------------------------*/
-    /***
+    /**
      * @name convertFromCelsius
      * @type {method}
      * @return {float} result = converted float C and K
@@ -88,7 +90,7 @@ class TempConverter{
         return parseFloat(result.toFixed(1));
     }
     /*------------------------------------------------------*/
-    /***
+    /**
      * @name convertFromKelvin
      * @type {method}
      * @return {float} result = converted float C and K
@@ -108,7 +110,7 @@ class TempConverter{
         return parseFloat(result.toFixed(1));
     }
     /*------------------------------------------------------*/
-    /***
+    /**
      * @name buildNumberObject
      * @type {method}
      * @return start, end, counter_state
@@ -124,7 +126,7 @@ class TempConverter{
         return number_obj;
     }
     /*------------------------------------------------------*/
-    /***
+    /**
      * @name getPercentage
      * @type {Method}
      * @param {String} units
@@ -142,7 +144,7 @@ class TempConverter{
         return `${result.toFixed(1)}%`;
     }
     /*------------------------------------------------------*/
-    /***
+    /**
      * @name compareNumbers
      * @type {method}
      * @return start, end, counter_state

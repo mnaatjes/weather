@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: class_temp_converter.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: class_temp_converter.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//-------------------------------------------------------------------------------------------------------
+// CIS 174: Class - TempConverter
+//-------------------------------------------------------------------------------------------------------
+/*------------------------------------------------------*/
+/**
+ * @name TempConverter
+ * @type {Class}
+ * @namespace TempConverter
+ * @description This class converts temperatures from x to y
+ * @property {Object} temperatures
+ */
+/*------------------------------------------------------*/
+class TempConverter{
+    constructor(){
+        /**
+         * @memberof TempConverter
+         * @name temperatures
+         * @type {Object}
+         * @property {Object} fahrenheit
+         * @property {Object} celsius
+         * @property {Object} kelvin
+         */
+        this.temperatures = {
+            fahrenheit: {index: 0, abbv: 'F', a: -460.0, b: 212.0},
+            celsius: {index: 1, abbv: 'C', a: -273.2, b: 100.0},
+            kelvin: {index: 2, abbv: 'K', a: 0.0, b: 373.0}
+        };
+    }
+    /*------------------------------------------------------*/
+    /**
+     * @name convertTo
+     * @type {method}
+     * @return {float} result = converted float C and K
+     */
+    /*------------------------------------------------------*/
+    convertTo(units_from, units_to, number){
+        // units_from
+        switch(units_from){
+            // fahrenheit
+            case ('fahrenheit'):
+                return this.convertFromFahrenheit(units_to, number);
+            // celsius
+            case ('celsius'):
+                return this.convertFromCelsius(units_to, number);
+            // kelvin
+            case ('kelvin'):
+                return this.convertFromKelvin(units_to, number);
+            default:
+                console.log('ERROR!');
+        }
+    }
+    /*------------------------------------------------------*/
+    /**
+     * @name convertFromFahrenheit
+     * @type {method}
+     * @return {float} result = converted float C and K
+     */
+    /*------------------------------------------------------*/
+    convertFromFahrenheit(units_to, number){
+        // set result property
+        let result;
+        // run conversion
+        if(units_to == 'celsius'){
+            result = (number - 32) * (5/9);
+        }
+        else if(units_to == 'kelvin'){
+            result = (number - 32) * (5/9) + 273.15;
+        } else if (units_to == 'fahrenheit'){result = number;}
+        // return converted number
+        return parseFloat(result.toFixed(1));
+    }
+    /*------------------------------------------------------*/
+    /**
+     * @name convertFromCelsius
+     * @type {method}
+     * @return {float} result = converted float C and K
+     */
+    /*------------------------------------------------------*/
+    convertFromCelsius(units_to, number){
+        // set result property
+        let result;
+        // run conversion
+        if(units_to == 'fahrenheit'){
+            result = (number * (9/5)) + 32;
+        }
+        else if(units_to == 'kelvin'){
+            result = number + 273.15;
+        } else if (units_to == 'celsius'){result = number;}
+        // return converted number
+        return parseFloat(result.toFixed(1));
+    }
+    /*------------------------------------------------------*/
+    /**
+     * @name convertFromKelvin
+     * @type {method}
+     * @return {float} result = converted float C and K
+     */
+    /*------------------------------------------------------*/
+    convertFromKelvin(units_to, number){
+        // set result property
+        let result;
+        // run conversion
+        if(units_to == 'fahrenheit'){
+            result = ((number - 273.15) * (9/5)) + 32;
+        }
+        else if(units_to == 'celsius'){
+            result = number - 273.15;
+        } else if (units_to == 'kelvin'){result = number;}
+        // return converted number
+        return parseFloat(result.toFixed(1));
+    }
+    /*------------------------------------------------------*/
+    /**
+     * @name buildNumberObject
+     * @type {method}
+     * @return start, end, counter_state
+     */
+    /*------------------------------------------------------*/
+    buildNumberObject(units, number){
+        // create number object
+        let number_obj = {
+            number: parseFloat(number.toFixed(1)),
+            units: units,
+            percentage: this.getPercentage(units, number.toFixed(1)),
+        };
+        return number_obj;
+    }
+    /*------------------------------------------------------*/
+    /**
+     * @name getPercentage
+     * @type {Method}
+     * @param {String} units
+     * @param {Number} number float
+     */
+    /*------------------------------------------------------*/
+    getPercentage(units, number){
+        let result = 0;
+        // define range map
+        let min = this.temperatures[units].a;
+        let max = this.temperatures[units].b;
+        // run function
+        result = 100 * ((number - min) / (max - min));
+        // convert float and return result
+        return `${result.toFixed(1)}%`;
+    }
+    /*------------------------------------------------------*/
+    /**
+     * @name compareNumbers
+     * @type {method}
+     * @return start, end, counter_state
+     */
+    /*------------------------------------------------------*/
+    compareNumbers(start, end){
+        if (start > end){
+            return false;
+        } else if (start &lt; end){
+            return true;
+        }
+    }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="TempConverter.html">TempConverter</a></li></ul><h3>Global</h3><ul><li><a href="global.html#buildNumberObject">buildNumberObject</a></li><li><a href="global.html#compareNumbers">compareNumbers</a></li><li><a href="global.html#convertFromCelsius">convertFromCelsius</a></li><li><a href="global.html#convertFromFahrenheit">convertFromFahrenheit</a></li><li><a href="global.html#convertFromKelvin">convertFromKelvin</a></li><li><a href="global.html#convertTo">convertTo</a></li><li><a href="global.html#getPercentage">getPercentage</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Thu Sep 26 2024 09:26:07 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
