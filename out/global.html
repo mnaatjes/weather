@@ -98,7 +98,7 @@
 
         
             
-<h4 class="name" id="buildNumberObject"><span class="type-signature"></span>buildNumberObject<span class="type-signature"> :method</span></h4>
+<h4 class="name" id="animateThermometer"><span class="type-signature"></span>animateThermometer<span class="type-signature"> :method</span></h4>
 
 
 
@@ -148,7 +148,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="class_temp_converter.js.html">class_temp_converter.js</a>, <a href="class_temp_converter.js.html#line113">line 113</a>
+        <a href="class_thermometer.js.html">class_thermometer.js</a>, <a href="class_thermometer.js.html#line131">line 131</a>
     </li></ul></dd>
     
 
@@ -166,7 +166,7 @@
 
         
             
-<h4 class="name" id="compareNumbers"><span class="type-signature"></span>compareNumbers<span class="type-signature"> :method</span></h4>
+<h4 class="name" id="calculateTiming"><span class="type-signature"></span>calculateTiming<span class="type-signature"> :method</span></h4>
 
 
 
@@ -216,7 +216,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="class_temp_converter.js.html">class_temp_converter.js</a>, <a href="class_temp_converter.js.html#line147">line 147</a>
+        <a href="class_thermometer.js.html">class_thermometer.js</a>, <a href="class_thermometer.js.html#line173">line 173</a>
     </li></ul></dd>
     
 
@@ -234,7 +234,7 @@
 
         
             
-<h4 class="name" id="convertFromCelsius"><span class="type-signature"></span>convertFromCelsius<span class="type-signature"> :method</span></h4>
+<h4 class="name" id="updateCounter"><span class="type-signature"></span>updateCounter<span class="type-signature"> :method</span></h4>
 
 
 
@@ -284,7 +284,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="class_temp_converter.js.html">class_temp_converter.js</a>, <a href="class_temp_converter.js.html#line73">line 73</a>
+        <a href="class_thermometer.js.html">class_thermometer.js</a>, <a href="class_thermometer.js.html#line146">line 146</a>
     </li></ul></dd>
     
 
@@ -302,7 +302,7 @@
 
         
             
-<h4 class="name" id="convertFromFahrenheit"><span class="type-signature"></span>convertFromFahrenheit<span class="type-signature"> :method</span></h4>
+<h4 class="name" id="updateMercuryColor"><span class="type-signature"></span>updateMercuryColor<span class="type-signature"> :method</span></h4>
 
 
 
@@ -352,7 +352,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="class_temp_converter.js.html">class_temp_converter.js</a>, <a href="class_temp_converter.js.html#line53">line 53</a>
+        <a href="class_thermometer.js.html">class_thermometer.js</a>, <a href="class_thermometer.js.html#line184">line 184</a>
     </li></ul></dd>
     
 
@@ -369,24 +369,107 @@
 
 
         
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
             
-<h4 class="name" id="convertFromKelvin"><span class="type-signature"></span>convertFromKelvin<span class="type-signature"> :method</span></h4>
+
+    
+
+    
+    <h4 class="name" id="resetEventsclearsstatestodefault"><span class="type-signature"></span>resetEvents clears states to default<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
 
 
 
 
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
             
-<span class="param-type">method</span>
+                <td class="name"><code>node_parent</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
 
 
-        </li>
-    </ul>
+            
+            </td>
 
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>event_items</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -420,7 +503,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="class_temp_converter.js.html">class_temp_converter.js</a>, <a href="class_temp_converter.js.html#line93">line 93</a>
+        <a href="class_thermometer.js.html">class_thermometer.js</a>, <a href="class_thermometer.js.html#line58">line 58</a>
     </li></ul></dd>
     
 
@@ -436,25 +519,139 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
             
-<h4 class="name" id="convertTo"><span class="type-signature"></span>convertTo<span class="type-signature"> :method</span></h4>
+
+    
+
+    
+    <h4 class="name" id="setMin"><span class="type-signature"></span>setMin<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
 
 
 
 
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
             
-<span class="param-type">method</span>
+                <td class="name"><code>node_parent</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
 
 
-        </li>
-    </ul>
+            
+            </td>
 
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>node_max</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>node_min</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -488,7 +685,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="class_temp_converter.js.html">class_temp_converter.js</a>, <a href="class_temp_converter.js.html#line30">line 30</a>
+        <a href="class_thermometer.js.html">class_thermometer.js</a>, <a href="class_thermometer.js.html#line32">line 32</a>
     </li></ul></dd>
     
 
@@ -504,68 +701,14 @@
 
 
 
-        
-            
-<h4 class="name" id="getPercentage"><span class="type-signature"></span>getPercentage<span class="type-signature"> :Method</span></h4>
 
 
 
 
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Method</span>
 
 
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="class_temp_converter.js.html">class_temp_converter.js</a>, <a href="class_temp_converter.js.html#line129">line 129</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
 
 
 
@@ -573,8 +716,6 @@
 
 
         
-    
-
     
 
     
@@ -590,13 +731,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="TempConverter.html">TempConverter</a></li></ul><h3>Global</h3><ul><li><a href="global.html#buildNumberObject">buildNumberObject</a></li><li><a href="global.html#compareNumbers">compareNumbers</a></li><li><a href="global.html#convertFromCelsius">convertFromCelsius</a></li><li><a href="global.html#convertFromFahrenheit">convertFromFahrenheit</a></li><li><a href="global.html#convertFromKelvin">convertFromKelvin</a></li><li><a href="global.html#convertTo">convertTo</a></li><li><a href="global.html#getPercentage">getPercentage</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="Thermometer.html">Thermometer</a></li><li><a href="Thermometer.Constructor.html">Constructor</a></li></ul><h3>Global</h3><ul><li><a href="global.html#animateThermometer">animateThermometer</a></li><li><a href="global.html#calculateTiming">calculateTiming</a></li><li><a href="global.html#resetEventsclearsstatestodefault">resetEvents clears states to default</a></li><li><a href="global.html#setMin">setMin</a></li><li><a href="global.html#updateCounter">updateCounter</a></li><li><a href="global.html#updateMercuryColor">updateMercuryColor</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Thu Sep 26 2024 09:26:07 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Thu Sep 26 2024 09:39:17 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
